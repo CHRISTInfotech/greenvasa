@@ -1,0 +1,17 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+}
+footer{
+    margin-top: auto;
+}
+
+.border-home{
+    box-shadow: 5px 5px 6px 6px grey;
+}
+
+.loginIcon{
+    font-size: xxx-large
+}
