@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Greenvasa</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+
+    <style>
+        .btn-login {
+          font-size: 0.9rem;
+          letter-spacing: 0.05rem;
+          padding: 0.75rem 1rem;
+        }
+
+        .btn-google {
+          color: white !important;
+          background-color: #ea4335;
+        }
+
+        .btn-facebook {
+          color: white !important;
+          background-color: #3b5998;
+        }
+
+
+        .success-message{
+            color:green
+        }
+        .error-message{
+            color:red;
+        }
+
+   </style>
+</head>
+<body style="background-color: #005C45;">
+
+
+    <div class="px-4 py-5 my-5 mt-0 pt-0 text-center">
+        <img class="d-block mx-auto" src="{% static 'img/logo1.png' %}" alt="" width="250" height="230">
+        <!-- <p class="" style="color: aliceblue; font-size: 25px;">Enter the Details</p> -->
+        <div class="container" >
+          <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+              <div class="card border-0 shadow rounded-3 my-5 mt-0" style="background-color: #0D644E; border-radius: 5px;">
+                <div class="card-body p-4 p-sm-5" >
+                  <h5 class="card-title text-center mb-5 fw-bold fs-5" style="color: aliceblue;">Sign Up to Greenvasa</h5>
+                  <form method="post" >
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" name="name" id="floatingInput" placeholder="name@example.com">
+                      <label for="floatingInput">Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control" name="email_address" id="floatingInput" placeholder="name@example.com">
+                      <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="number" class="form-control" name="mobile_number" id="floatingInput" placeholder="name@example.com">
+                      <label for="floatingInput">Mobile Number</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                      <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="password" class="form-control" name="confirm_password" id="confirmpassword" placeholder="Confirm Password">
+                      <div class="form-text confirm-message"></div>
+                      <label for="floatingPassword">Confirm Password</label>
+                    </div>
+                    <div class="d-grid">
+                      <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
+                        Up</button>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row">
+                        <a href="{% url 'sign_up_in:g_login' %}">Already have an account?</a>
+                      <!-- <div class="col"><a href="">Already have an account?</a></div>
+                      <div class="col"><a href="">Forgot Password?</a></div> -->
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $('#password, #confirmpassword').on('keyup', function(){
+  
+          $('.confirm-message').removeClass('success-message').removeClass('error-message');
+  
+          let password=$('#password').val();
+          let confirm_password=$('#confirmpassword').val();
+  
+          if(password===""){
+              $('.confirm-message').text("Password Field cannot be empty").addClass('error-message');
+          }
+          else if(confirm_password===""){
+              $('.confirm-message').text("Confirm Password Field cannot be empty").addClass('error-message');
+          }
+          else if(confirm_password===password)
+          {
+              $('.confirm-message').text('Password Match!').addClass('success-message');
+          }
+          else{
+              $('.confirm-message').text("Password Doesn't Match!").addClass('error-message');
+          }
+  
+      });
+  </script>
+
+
+
+
+</body>
+</html>
