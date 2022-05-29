@@ -4,6 +4,7 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(request):
+    request.session["login_status"]=False
     return render(request,'landing.html')
 
 

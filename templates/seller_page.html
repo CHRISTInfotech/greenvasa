@@ -92,10 +92,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="color: aliceblue; font-size: 20px; font-weight: bold;">
               <li class="nav-item px-2">
-                <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="#">Buy</a>
+                <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'main:products' %}">Buy</a>
               </li>
               <li class="nav-item px-2">
-                <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'sign_up_in:g_login' %}">Sell</a>
+                <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'seller:seller' %}">Sell</a>
               </li>
               <li class="nav-item px-2">
                 <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="#">About Us</a>
@@ -124,6 +124,9 @@
             <div class="valid-feedback">
               Looks good!
             </div>
+            <div class="invalid-feedback">
+              Please provide product name.
+            </div>
           </div>
           <div class="col-md-3">
             <label for="validationCustom04" class="form-label">Category</label>
@@ -149,8 +152,8 @@
             </div>
           </div>
           <div class="col-md-7">
-            <label for="validationCustom03" class="form-label">Tell us about your product</label>
-            <input type="text" class="form-control" id="validationCustom03" required>
+            <label for="exampleFormControlTextarea1" class="form-label">Tell us about your product</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
             <div class="invalid-feedback">
               Please tell us about your product.
             </div>
@@ -167,7 +170,7 @@
           </div> -->
           <div class="col-md-5">
             <label for="validationCustom05" class="form-label">Product photos</label>
-            <input type="file" id="pro-image" name="pro-image" style="" class="form-control" multiple>
+            <input type="file" id="pro-image" name="pro-image" style="" class="form-control" accept=".jpg,.gif,.png, .jpeg" multiple required>
             <div class="invalid-feedback">
               Please upload your product images.
             </div>
@@ -192,6 +195,25 @@
 
 
       <script>
+        
+        const input = document.querySelector('#pro-image');
+
+// Listen for files selection
+input.addEventListener('change', (e) => {
+    // Retrieve all files
+    const files = input.files;
+
+    // Check files count
+    if (files.length > 2) {
+        alert(`Only 2 files are allowed to upload.`);
+        return;
+    }
+
+    // TODO: continue uploading on server
+});
+      </script>
+
+      <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
   'use strict'
@@ -212,7 +234,11 @@
       }, false)
     })
 })()
+
+
       </script>
+
+
 
 </body>
 </html>

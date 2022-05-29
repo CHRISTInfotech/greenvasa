@@ -35,10 +35,15 @@ def g_login(request):
 
         print(Email)
         print(Password)
-
+        # request.session["user_email"]=Email
         try:
             user = G_Sign_up.objects.get(email=Email,password = Password)
+            print(user)
             if user is not None:
+                print('User is there')
+                # request.session["user_name"]=user['name']
+                request.session["user_email"]=Email
+                request.session["login_status"]=True
 
                 return redirect('main:products')
             # else:
@@ -46,6 +51,7 @@ def g_login(request):
             #     #return redirect('sellersignin')
             #     return HttpResponse("User doesnot exist.")
         except Exception as identifier:
+            request.session["login_status"]=False
             #return redirect('sellersignin')
             return HttpResponse("Email or Password is incorrect.")
     else:
