@@ -114,13 +114,16 @@
       </nav>
 
 
+      
 
-      <div class="container mt-4">
-
-        <form class="row g-3 needs-validation" novalidate>
+      <div class="container mt-4" >
+        <div class="row"><h2>Product Details</h2></div>
+        <div class="row p-5" style="border: #005C45 2px solid;">
+        <form method="post" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
           <div class="col-md-6">
             <label for="validationCustom01" class="form-label">Product name</label>
-            <input type="text" class="form-control" id="validationCustom01" required>
+            <input type="text" name="product_name" class="form-control" id="validationCustom01" required>
             <div class="valid-feedback">
               Looks good!
             </div>
@@ -130,7 +133,7 @@
           </div>
           <div class="col-md-3">
             <label for="validationCustom04" class="form-label">Category</label>
-            <select class="form-select" id="validationCustom04" required>
+            <select class="form-select" name="product_category" id="validationCustom04" required>
               <option selected disabled value="">Choose...</option>
               <option value="Mobiles">Mobiles</option>
               <option value="Laptops">Laptops</option>
@@ -145,7 +148,7 @@
             <label for="validationCustomUsername" class="form-label">Expected Price</label>
             <div class="input-group has-validation">
               <span class="input-group-text" id="inputGroupPrepend">₹</span>
-              <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+              <input type="text" name="product_price" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
               <div class="invalid-feedback">
                 Please Enter Expected Price.
               </div>
@@ -153,7 +156,7 @@
           </div>
           <div class="col-md-7">
             <label for="exampleFormControlTextarea1" class="form-label">Tell us about your product</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            <textarea class="form-control" name="product_description" id="exampleFormControlTextarea1" rows="3" required></textarea>
             <div class="invalid-feedback">
               Please tell us about your product.
             </div>
@@ -169,8 +172,20 @@
             </div>
           </div> -->
           <div class="col-md-5">
-            <label for="validationCustom05" class="form-label">Product photos</label>
-            <input type="file" id="pro-image" name="pro-image" style="" class="form-control" accept=".jpg,.gif,.png, .jpeg" multiple required>
+            <label for="validationCustom05" class="form-label">Product photos(4)</label>
+            <!-- <input type="file" id="pro-image" name="pro-image" style="" class="form-control" accept=".jpg,.gif,.png, .jpeg" multiple required> -->
+            <div class="row">
+              <div class="col">
+                <input type="file" id="pro-image" name="pro-image1" style="" class="form-control" accept=".jpg,.gif,.png, .jpeg" required>
+                <div class="mt-3"></div>
+                <input type="file" id="pro-image" name="pro-image2" style="" class="form-control" accept=".jpg,.gif,.png, .jpeg" required>
+              </div>
+              <div class="col">
+                <input type="file" id="pro-image" name="pro-image3" style="" class="form-control" accept=".jpg,.gif,.png, .jpeg" required>
+                <div class="mt-3"></div>
+                <input type="file" id="pro-image" name="pro-image4" style="" class="form-control" accept=".jpg,.gif,.png, .jpeg" required>
+              </div>
+            </div>
             <div class="invalid-feedback">
               Please upload your product images.
             </div>
@@ -190,27 +205,28 @@
             <button class="btn btn-primary" type="submit">Add product</button>
           </div>
         </form>
+        </div>
          
       </div>
 
 
       <script>
         
-        const input = document.querySelector('#pro-image');
+//         const input = document.querySelector('#pro-image');
 
-// Listen for files selection
-input.addEventListener('change', (e) => {
-    // Retrieve all files
-    const files = input.files;
+// // Listen for files selection
+// input.addEventListener('change', (e) => {
+//     // Retrieve all files
+//     const files = input.files;
 
-    // Check files count
-    if (files.length > 2) {
-        alert(`Only 2 files are allowed to upload.`);
-        return;
-    }
+//     // Check files count
+//     if (files.length > 2) {
+//         alert(`Only 2 files are allowed to upload.`);
+//         return;
+//     }
 
-    // TODO: continue uploading on server
-});
+//     // TODO: continue uploading on server
+// });
       </script>
 
       <script>
