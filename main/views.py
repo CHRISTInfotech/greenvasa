@@ -21,3 +21,8 @@ def products(request):
     print(product[0].id)
     print(product[1].id)
     return render(request,'products.html', {'products': product, 'BASE_DIR':BASE_DIR})
+
+def product_details(request, id):
+    product = Product_List.objects.get(id=id)
+
+    return render(request,'products_details.html', {'product': product, 'BASE_DIR':BASE_DIR})

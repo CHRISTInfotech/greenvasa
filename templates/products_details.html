@@ -109,10 +109,7 @@
 
       <div class="container mt-4">
         <div class="row">
-          {% for product in products %}
-          
           <div class="col-4" style="width: 400px; height: 200px; border: solid 2px #005C45; border-radius: 5px;">
-            <a href="/products_details/{{ product.id }}" style="text-decoration: none; color: inherit;">
             <div class="row">
               <div class="col-5">
                 <div class="row  d-flex justify-content-center" style="width: max-width; height: max-height;">
@@ -133,10 +130,8 @@
             </div>
             <!-- {{product.product_name}} -->
             <!-- <img src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="" style="width: 150px; height:fit-content"> -->
-          </a>
           </div>
-        
-          {% endfor %}
+
         </div>
       </div>
 
