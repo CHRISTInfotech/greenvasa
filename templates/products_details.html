@@ -44,6 +44,54 @@
                     padding: 5px\9;
                 }
             }
+
+            .imgSlideContainer {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 500px;
+              height: 400px;
+
+            }
+
+            ul.thumb {
+              margin: 0 auto;
+              padding: 0;
+              float: left;
+            }
+
+            ul.thumb li {
+              list-style: none;
+              margin: 5px;
+              width: 100px;
+              height: 100px;
+              border: 1px solid rgba(0,0,0,.2);
+              overflow: hidden;
+            }
+
+            ul.thumb li img {
+              width: 100%;
+            }
+
+            .imgBox {
+              float: left;
+              width: 500px;
+              height: 500px;
+              margin: 5px;
+              border: 1px solid rgba(0,0,0,.2);
+              overflow: hidden;
+
+            }
+
+            .imgBox img {
+              width: 100%;
+            }
+
+            .imgprop {
+              height:80px;
+               width: 80px;
+            }
     </style>
 
 
@@ -107,18 +155,50 @@
 
 
 
-      <div class="container mt-4">
-        <div class="row">
+      <div class=" mt-4">
+        <div class="row imgSlideContainer">
           
-            </div>
-            <!-- {{product.product_name}} -->
-            <!-- <img src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="" style="width: 150px; height:fit-content"> -->
+          <ul class="thumb">
+            <li>
+              <a href="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" target="imgBox">
+                <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="">
+              </a>
+            </li>
+            <li>
+              <a href="{{ BASIC_DIR }}/uploads/{{product.product_image2}}" target="imgBox">
+                <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image2}}" alt="">
+              </a>
+            </li>
+            <li>
+              <a href="{{ BASIC_DIR }}/uploads/{{product.product_image3}}" target="imgBox">
+                <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image3}}" alt="">
+              </a>
+            </li>
+            <li>
+              <a href="{{ BASIC_DIR }}/uploads/{{product.product_image4}}" target="imgBox">
+                <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image4}}" alt="">
+              </a>
+            </li>
+          </ul>
+
+          <div class="imgBox">
+            <img style="width: 400px; height: 400px;" src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="">
           </div>
 
         </div>
       </div>
 
 
+      <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('.thumb a').mouseover(function(e){
+            e.preventDefault();
+            $('.imgBox img').attr("src", $(this).attr("href"));
+          })
+        })
+      </script>
 
 
 </body>
