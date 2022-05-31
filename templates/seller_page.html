@@ -116,9 +116,9 @@
 
       
 
-      <div class="container mt-4" >
+      <div class="container mt-4" style="">
         <div class="row"><h2>Product Details</h2></div>
-        <div class="row p-5" style="border: #005C45 2px solid;">
+        <div class="row p-5 shadow" style="background-color: white; border: solid 2px #005C45; border-radius: 5px;">
         <form method="post" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
           {% csrf_token %}
           <div class="col-md-6">
@@ -201,8 +201,8 @@
               </div>
             </div>
           </div> -->
-          <div class="col-12">
-            <button class="btn btn-primary" type="submit">Add product</button>
+          <div class="col-12" style="display: flex; justify-content: end;">
+            <button class="btn btn-primary" style="background-color: #005C45; " type="submit">Add product</button>
           </div>
         </form>
         </div>

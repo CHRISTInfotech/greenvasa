@@ -4,6 +4,9 @@ from django.shortcuts import render
 from greenvasadev.settings import BASE_DIR
 
 from seller.models import Product_List
+from sign_up_in.models import G_Sign_up
+
+G_Sign_up
 
 # Create your views here.
 
@@ -24,5 +27,7 @@ def products(request):
 
 def product_details(request, id):
     product = Product_List.objects.get(id=id)
+    user_name = product.user_id
+    seller_details = G_Sign_up.objects.get(email=user_name)
 
-    return render(request,'products_details.html', {'product': product, 'BASE_DIR':BASE_DIR})
+    return render(request,'products_details.html', {'product': product, 'seller_details':seller_details, 'BASE_DIR':BASE_DIR})
