@@ -16,13 +16,6 @@
 
 
     <style>
-
-.center {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Border color is optional */  
-
-}
         select {
             width: 100px;
             /* padding: 5px 35px 5px 5px; */
@@ -51,11 +44,19 @@
                     padding: 5px\9;
                 }
             }
+
+
+            .legend.product_box {
+    width:inherit; /* Or auto */
+    padding:0 10px; /* To give a bit of padding on the left and right */
+    border: #005C45 2px solid;
+    border-bottom:none;
+}
     </style>
 
 
 </head>
-<body style="background-color: #b8fbea;">
+<body>
     
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #005C45;">
         <div class="container-fluid">
@@ -97,7 +98,7 @@
                 <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'seller:seller' %}">Sell</a>
               </li>
               <li class="nav-item px-2">
-                <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'main:aboutUs' %}">About Us</a>
+                <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="#">About Us</a>
               </li>
               <li class="nav-item px-2">
                 <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'sign_up_in:g_login' %}">Login</a>
@@ -113,42 +114,9 @@
       </nav>
 
 
-
-      <div class="m-4 justify-content-center">
-        <div class="row justify-content-center">
-          {% for product in products %}
-          
-          <div class="col-4 shadow" style="width: 450px; height: 220px; background-color: white; border: solid 2px #005C45; border-radius: 5px; margin-right: 15px; margin-top: 10px;">
-            <a href="/products_details/{{ product.id }}" style="text-decoration: none; color: inherit;">
-            <div class="row">
-              <div class="col-5 center" style="height: 220px;">
-                <div class="row" style="width: max-width; height: max-height;">
-                  <img src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="" style="width: 150px; height:fit-content">
-                </div>
-              </div>
-              <div class="col-7" style="height: 220px; display: flex; align-items: center; justify-content: center; ">
-                <div class="row">
-                  <span class="row" style="color: black; font-size: 1.125rem; font-weight: 500;">
-                    {{product.product_name}}
-                  </span>
-                  <span class="row" style="color: #005C45; font-size:1.563rem; font-weight: 500;">
-                    ₹ {{product.expected_price}}
-                  </span>
-                  <span class="row" style="font-size: 0.875rem; max-height: 90px; white-space: wrap; overflow: hidden; text-overflow: ellipsis;">
-                    {{product.product_description}}
-                  </span>
-                </div>
-              </div>
-            </div>
-            <!-- {{product.product_name}} -->
-            <!-- <img src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="" style="width: 150px; height:fit-content"> -->
-          </a>
-          </div>
-        
-          {% endfor %}
-        </div>
+      <div class="container">
+        <div style="margin: 100px">About Us</div>
       </div>
-
 
 
 

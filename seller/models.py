@@ -14,7 +14,7 @@ class Product_List(models.Model):
     product_name = models.CharField(max_length=100, blank=False, null=False)
     category = models.CharField(max_length=100, blank=False, null=False)
     expected_price = models.CharField(max_length=12,blank=False, null=False)
-    product_description = models.CharField(max_length=500, blank=False, null=False)
+    product_description = models.CharField(max_length=1500, blank=False, null=False)
     product_image1 = models.FileField(upload_to=user_directory_path2, null=True, verbose_name="")
     product_image2 = models.FileField(upload_to=user_directory_path2, null=True, verbose_name="")
     product_image3 = models.FileField(upload_to=user_directory_path2, null=True, verbose_name="")

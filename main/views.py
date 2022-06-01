@@ -14,6 +14,10 @@ def index(request):
     request.session["login_status"]=False
     return render(request,'landing.html')
 
+def aboutUs(request):
+    # request.session["login_status"]=False
+    return render(request,'about_us.html')
+
 
 def products(request):
     product = Product_List.objects.all()
