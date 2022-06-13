@@ -12,6 +12,7 @@ G_Sign_up
 
 def index(request):
     request.session["login_status"]=False
+    login_status = request.session["login_status"]
     return render(request,'landing.html')
 
 def aboutUs(request):
@@ -24,9 +25,9 @@ def products(request):
     print(type(product))
     print(len(product))
     print(BASE_DIR)
-    print(product[0].product_image1)
-    print(product[0].id)
-    print(product[1].id)
+    # print(product[0].product_image1)
+    # print(product[0].id)
+    # print(product[1].id)
     return render(request,'products.html', {'products': product, 'BASE_DIR':BASE_DIR})
 
 def product_details(request, id):

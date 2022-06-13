@@ -7,6 +7,9 @@
     {% load static %}
     <title>Greenvasa</title>
 
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lusitana">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -89,13 +92,14 @@
 
             .imgBox img {
               width: 100%;
-              height: 100%;
+              min-height: fit-content;
             }
 
             .imgprop {
               /* height:80px;
                width: 80px; */
                min-height: 100%;
+               max-height: fit-content;
                min-width: 100%;
             }
     </style>
@@ -110,13 +114,16 @@
               <img src="{% static 'img/logo.png' %}" alt="" width="140px" height="80px">
           </a>
 
-          <form class="d-flex">
+          <h1 style="color: white; font-family: Lusitana;">GREENVASA <sub style=" font-family: 'Satisfy';">making living sustainable</sub></h1>
+          <div class="" style="margin-left: 15vw;"></div>
+
+          <!-- <form class="d-flex">
             <select name="cars" id="cars">
                 <option value="Mobiles">Mobiles</option>
                 <option value="Laptops">Laptops</option>
                 <option value="Furniture">Furniture</option>
                 <option value="Electronics">Electronics</option>
-              </select>
+              </select> -->
 
               <!-- <div class="dropdown">
                 <button class="dropbtn">Dropdown</button>
@@ -127,14 +134,17 @@
                 </div>
               </div> -->
 
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style=" height: 50px; width: 40vw; margin-right: 0px!important; border-radius: 0px 0px 0px 0px;">
+            <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style=" height: 50px; width: 40vw; margin-right: 0px!important; border-radius: 0px 0px 0px 0px;">
             <button type="submit" style="border:none; background-color: aliceblue; border-radius: 0px 5px 5px 0px;"><i class="fa fa-search p-2"></i></button>
-          </form>
+          </form> -->
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div style="margin-left: 5vw;"></div>
+          <!-- <div style="margin-left: 5vw;"></div> -->
+
+
+        
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="color: aliceblue; font-size: 20px; font-weight: bold;">
               <li class="nav-item px-2">
