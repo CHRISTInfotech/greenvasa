@@ -91,9 +91,9 @@ WSGI_APPLICATION = 'greenvasadev.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test1',
+        'NAME': 'marketplacedemo',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'Dell@mysql',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -134,7 +134,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = ( 

@@ -3,6 +3,14 @@ from .models import Product_List
 # Create your views here.
 
 
+def productAdded(request):
+    # request.session["login_status"]=False
+    login_status = request.session["login_status"]
+    if login_status:    
+        return render(request,'product_added.html')
+    else:
+        return redirect('/products/')
+
 def g_seller(request):
     login_status = request.session["login_status"]
     # print(request.session["user_name"])
@@ -38,6 +46,11 @@ def g_seller(request):
             product_Table.product_image4 = productImage4
 
             product_Table.save()
+
+            return redirect('/g/seller/submitted')
+
         return render(request,'seller_page.html')
     else:
         return redirect('sign_up_in:g_login')
+
+

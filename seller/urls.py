@@ -8,4 +8,5 @@ app_name='seller'
 
 urlpatterns = [
     path('seller/', views.g_seller, name='seller'),   
+    path('seller/submitted', views.productAdded, name='productAdded'),   
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

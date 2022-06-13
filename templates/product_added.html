@@ -48,60 +48,13 @@
                 }
             }
 
-            .imgSlideContainer {
-              position: absolute;
-              margin-top: 210px;
-              /* top: 40%; */
-              left: 20%;
-              transform: translate(-50%, -50%);
-              width: 500px;
-              height: 400px;
 
-            }
-
-            ul.thumb {
-              margin: 0 auto;
-              padding: 0;
-              float: left;
-            }
-
-            ul.thumb li {
-              list-style: none;
-              margin: 5px;
-              width: 100px;
-              height: 100px;
-              border: 1px solid rgba(0,0,0,.2);
-              overflow: hidden;
-            }
-
-            ul.thumb li img {
-              width: 100%;
-            }
-
-            .imgBox {
-              float: left;
-              width: 35vw;
-              height: 35vw;
-              /* max-height: 100%;
-               max-width: 100%; */
-              margin: 5px;
-              border: 1px solid rgba(0,0,0,.2);
-              overflow: hidden;
-
-            }
-
-            .imgBox img {
-              width: 100%;
-              min-height: fit-content;
-            }
-
-            .imgprop {
-              /* height:80px;
-               width: 80px; */
-               min-height: 100%;
-               max-height: fit-content;
-               min-width: 100%;
-            }
+            .legend.product_box {
+    width:inherit; /* Or auto */
+    padding:0 10px; /* To give a bit of padding on the left and right */
+    border: #005C45 2px solid;
+    border-bottom:none;
+}
     </style>
 
 
@@ -133,8 +86,8 @@
                 <a href="#">Link 3</a>
                 </div>
               </div> -->
-<!-- 
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style=" height: 50px; width: 40vw; margin-right: 0px!important; border-radius: 0px 0px 0px 0px;">
+
+            <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style=" height: 50px; width: 40vw; margin-right: 0px!important; border-radius: 0px 0px 0px 0px;">
             <button type="submit" style="border:none; background-color: aliceblue; border-radius: 0px 5px 5px 0px;"><i class="fa fa-search p-2"></i></button>
           </form>
 
@@ -143,8 +96,7 @@
           </button>
           <div style="margin-left: 5vw;"></div> -->
 
-
-        
+          
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="color: aliceblue; font-size: 20px; font-weight: bold;">
               <li class="nav-item px-2">
@@ -170,87 +122,69 @@
       </nav>
 
 
+      
 
-      <div class="">
-        <div class="row m-5">
-          
-         <div class="col-6">
-
-          <div class="col-3">
-            <ul class="thumb">
-              <li>
-                <span> <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image1}}"  target="imgBox"> 
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="">
-                </a> </span>
-              </li>
-              <li>
-                <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image2}}" target="imgBox">
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image2}}" alt="">
-                </a>
-              </li>
-              <li>
-                <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image3}}" target="imgBox">
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image3}}" alt="">
-                </a>
-              </li>
-              <li>
-                <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image4}}" target="imgBox">
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image4}}" alt="">
-                </a>
-              </li>
-            </ul>
+      <div class="container mt-4" style="">
+        
+        <div class="card" style="border: solid 2px #005C45;">
+          <div class="card-header">
+            Submitted for review
           </div>
-
-          <div class="imgBox col-9">
-            <img style="" class=".imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="">
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>We have received your product, It will go live after the review</p>
+              <footer class="blockquote-footer">Thank You <cite title="Source Title"></cite></footer>
+            </blockquote>
           </div>
-
-         </div>
-
-         <div class="col-6">
-          <div class="row">
-            <span class="row" style="color: black; font-size: 1.5rem; font-weight: 500;">
-              {{product.product_name}}
-            </span>
-            <span class="row" style="color: #005C45; font-size:2rem; font-weight: 500;">
-              ₹ {{product.expected_price}}
-            </span>
-            <span class="row" style="font-size: 1.2rem; max-height: 90px; white-space: wrap; overflow: hidden; text-overflow: ellipsis;">
-              {{product.product_description}}
-            </span>
-
-          </div>
-
-          <div class="row" style="margin-top: 20px;">
-            <div class="card" style="padding-left: 0; padding-right: 0;" >
-              <h5 class="card-header" style="background-color: #a5fae5; color: black; font-weight: 600;">Contact Details</h5>
-              <div class="card-body">
-                <h5 class="card-title">Name: {{seller_details.user_name}}</h5>
-                <h5 class="card-title">Email: {{seller_details.email}}</h5>
-                <h5 class="card-title">Mobile Number: {{seller_details.mobile_number}}</h5>
-                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a> -->
-              </div>
-            </div>
-          </div>
-
-         </div>
-
-
         </div>
+         
       </div>
 
 
-      <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+      <script>
+        
+//         const input = document.querySelector('#pro-image');
 
-      <script type="text/javascript">
-        $(document).ready(function(){
-          $('.thumb a').mouseover(function(e){
-            e.preventDefault();
-            $('.imgBox img').attr("src", $(this).attr("link"));
-          })
-        })
+// // Listen for files selection
+// input.addEventListener('change', (e) => {
+//     // Retrieve all files
+//     const files = input.files;
+
+//     // Check files count
+//     if (files.length > 2) {
+//         alert(`Only 2 files are allowed to upload.`);
+//         return;
+//     }
+
+//     // TODO: continue uploading on server
+// });
       </script>
+
+      <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+
+
+      </script>
+
 
 
 </body>
