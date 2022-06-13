@@ -4,3 +4,4 @@ venv/
 # DB file
 db.sqlite3
 
+.idea/
