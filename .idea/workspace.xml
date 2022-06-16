@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aab47300-b372-417b-8517-a8f5ef409c2d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/greenvasadev/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/greenvasadev/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +29,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
@@ -41,6 +43,9 @@
       <recent name="D:\Projects\greenvasa\siteuser" />
       <recent name="D:\Projects\greenvasa" />
       <recent name="D:\Projects\greenvasa\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\greenvasa" />
     </key>
   </component>
   <component name="RunManager">
@@ -79,7 +84,7 @@
       <workItem from="1648147020999" duration="788000" />
       <workItem from="1648543525632" duration="1741000" />
       <workItem from="1654240279826" duration="702000" />
-      <workItem from="1655145622181" duration="108000" />
+      <workItem from="1655145622181" duration="989000" />
     </task>
     <servers />
   </component>
