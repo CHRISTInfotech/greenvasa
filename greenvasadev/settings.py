@@ -17,8 +17,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-TEMPLATE_DIR=os.path.join(BASE_DIR, 'templates')
-STATIC_DIR=os.path.join(BASE_DIR, 'static')
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -28,9 +28,7 @@ SECRET_KEY = 'django-insecure-7$l(lis0z$=u#&ipoip6!rgq_*4c3d1wcdjt=)qqs0x4w_+d1c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-]
-
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -76,28 +74,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'greenvasadev.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'marketplacedemo',
-        'USER': 'root',
-        'PASSWORD': 'Dell@mysql',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3'
     }
 }
+
+#
+# DATABASES = {
+#     'default': {
+# 'ENGINE': 'django.db.backends.mysql',
+# 'NAME': 'marketplacedemo',
+# 'USER': 'root',
+# 'PASSWORD': 'Dell@mysql',
+# 'HOST': 'localhost',
+# 'PORT': '3306',
+#     }
+# }
 
 
 # Password validation
@@ -118,7 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -130,15 +126,16 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/gstatic/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = '/home/u1r60cp6vyvs/public_html/gstatic/'
 
-STATICFILES_DIRS = ( 
-    STATIC_DIR,        
+STATICFILES_DIRS = (
+	'/home/u1r60cp6vyvs/greenvasa/static',
+    # STATIC_DIR,
 )
 
 MEDIA_URL = '/uploads/'
@@ -152,4 +149,3 @@ MEDIA_ROOT = BASE_DIR / 'uploads'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-

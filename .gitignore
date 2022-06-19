@@ -1,0 +1,16 @@
+# virtual env file
+venv/
+
+# DB file
+db.sqlite3
+
+.idea/
+
+sign_up_in/__pycache__/
+sign_up_in/migrations/__pycache__/
+seller/__pycache__/
+seller/migrations/__pycache__/
+main/__pycache__/
+main/c/__pycache__/
+greenvasadev/__pycache__/
+uploads/
