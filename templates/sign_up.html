@@ -58,28 +58,86 @@
                 <div class="card-body p-4 p-sm-5" >
                   <!-- <h5 class="card-title text-center mb-5 fw-bold fs-5" style="color: aliceblue;">Sign Up to Greenvasa</h5> -->
                   <h5 class="card-title text-center mb-5 fw-bold fs-5" style="color: white; font-family: Lusitana;">GREENVASA <sub style=" font-family: 'Satisfy';">making living sustainable</sub></h5>
+
+                  <!-- <div class="d-flex justify-content-center form_container">
+
+                    <form method="POST" action="">
+                      {% csrf_token %}
+                      <div class="input-group mb-3">
+                        <div class="input-group-append">
+                          <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        {{form.username}}
+                      </div>
+                      <div class="input-group mb-2">
+                        <div class="input-group-append">
+                          <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+                        </div>
+                        {{form.email}}
+                      </div>
+                      <div class="input-group mb-2">
+                        <div class="input-group-append">
+                          <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        {{form.password1}}
+                      </div>
+                      <div class="input-group mb-2">
+                        <div class="input-group-append">
+                          <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        {{form.password2}}
+                      </div>
+          
+          
+          
+                         <div class="d-flex justify-content-center mt-3 login_container">
+                         <input class="btn login_btn" type="submit" value="Register Account">
+                         </div>
+          
+                    </form>
+                  </div> -->
+
+                  <!-- <div class="form-group">
+                    <form action="" method="post">
+                      {% csrf_token %}
+                      {{ form.as_p }}
+                      <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
+                        Up</button>
+                    </form>
+                  </div> -->
+
+
+
+
+                  
                   <form method="post" >
                     {% csrf_token %}
                     <div class="form-floating mb-3">
-                      <input type="text" class="form-control" name="name" id="floatingInput" placeholder="name@example.com">
+                      {{form.username}}
+                      
                       <label for="floatingInput">Name</label>
+                      
                     </div>
                     <div class="form-floating mb-3">
-                      <input type="email" class="form-control" name="email_address" id="floatingInput" placeholder="name@example.com">
+                      {{form.email}}
                       <label for="floatingInput">Email address</label>
+                      
                     </div>
                     <div class="form-floating mb-3">
-                      <input type="number" class="form-control" name="mobile_number" id="floatingInput" placeholder="name@example.com">
+                      {{form.phone}}
                       <label for="floatingInput">Mobile Number</label>
+                      
                     </div>
                     <div class="form-floating mb-3">
-                      <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                      {{form.password1}}
                       <label for="floatingPassword">Password</label>
+                      
                     </div>
                     <div class="form-floating mb-3">
-                      <input type="password" class="form-control" name="confirm_password" id="confirmpassword" placeholder="Confirm Password">
+                      {{form.password2}}
                       <div class="form-text confirm-message"></div>
                       <label for="floatingPassword">Confirm Password</label>
+                      
                     </div>
                     <div class="d-grid">
                       <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
@@ -88,10 +146,51 @@
                     <hr class="my-4">
                     <div class="row">
                         <a href="{% url 'sign_up_in:g_login' %}">Already have an account?</a>
-                      <!-- <div class="col"><a href="">Already have an account?</a></div>
-                      <div class="col"><a href="">Forgot Password?</a></div> -->
                     </div>
                   </form>
+
+                  
+
+<!-- 
+                  <form method="post" >
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" name="name" id="floatingInput" placeholder="name@example.com">
+                      
+                      <label for="floatingInput">Name</label>
+                      {{form.username}}
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control" name="email_address" id="floatingInput" placeholder="name@example.com">
+                      <label for="floatingInput">Email address</label>
+                      {{form.email}}
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="number" class="form-control" name="mobile_number" id="floatingInput" placeholder="name@example.com">
+                      <label for="floatingInput">Mobile Number</label>
+                      {{form.phone}}
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                      <label for="floatingPassword">Password</label>
+                      {{form.password1}}
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="password" class="form-control" name="confirm_password" id="confirmpassword" placeholder="Confirm Password">
+                      <div class="form-text confirm-message"></div>
+                      <label for="floatingPassword">Confirm Password</label>
+                      {{form.password2}}
+                    </div>
+                    <div class="d-grid">
+                      <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
+                        Up</button>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row">
+                        <a href="{% url 'sign_up_in:g_login' %}">Already have an account?</a>
+                    </div>
+                  </form> -->
+
                 </div>
               </div>
             </div>

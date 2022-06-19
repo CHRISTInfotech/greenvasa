@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from greenvasadev.settings import BASE_DIR
 
@@ -19,7 +20,6 @@ def aboutUs(request):
     # request.session["login_status"]=False
     return render(request,'about_us.html')
 
-
 def products(request):
     product = Product_List.objects.all()
     print(type(product))
@@ -29,6 +29,7 @@ def products(request):
     # print(product[0].id)
     # print(product[1].id)
     return render(request,'products.html', {'products': product, 'BASE_DIR':BASE_DIR})
+
 
 def product_details(request, id):
     product = Product_List.objects.get(id=id)

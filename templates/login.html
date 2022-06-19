@@ -51,7 +51,7 @@
                   <form method="post" >
                     {% csrf_token %}
                     <div class="form-floating mb-3">
-                      <input type="email" class="form-control" name="email_address" id="floatingInput" placeholder="name@example.com">
+                      <input type="text" class="form-control" name="email_address" id="floatingInput" placeholder="name@example.com">
                       <label for="floatingInput">Email address</label>
                     </div>
                     <div class="form-floating mb-3">
@@ -59,6 +59,11 @@
                       <label for="floatingPassword">Password</label>
                     </div>
                     <div class="d-grid">
+                      {% if request.GET.next %}
+
+                      <input type="hidden" name="next" value="{{request.GET.next}}" />
+
+                      {% endif %}
                       <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
                         in</button>
                     </div>
