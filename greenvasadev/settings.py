@@ -77,24 +77,24 @@ WSGI_APPLICATION = 'greenvasadev.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3'
-    }
-}
-
-#
 # DATABASES = {
 #     'default': {
-# 'ENGINE': 'django.db.backends.mysql',
-# 'NAME': 'marketplacedemo',
-# 'USER': 'root',
-# 'PASSWORD': 'Dell@mysql',
-# 'HOST': 'localhost',
-# 'PORT': '3306',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'db.sqlite3'
 #     }
 # }
+
+
+DATABASES = {
+    'default': {
+'ENGINE': 'django.db.backends.mysql',
+'NAME': 'marketplacedemo',
+'USER': 'root',
+'PASSWORD': 'Dell@mysql',
+'HOST': 'localhost',
+'PORT': '3306',
+    }
+}
 
 
 # Password validation
@@ -129,9 +129,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/gstatic/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_ROOT = '/home/u1r60cp6vyvs/public_html/gstatic/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = '/home/u1r60cp6vyvs/public_html/gstatic/'
 
 STATICFILES_DIRS = (
 	'/home/u1r60cp6vyvs/greenvasa/static',
@@ -140,6 +140,10 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/uploads/'
 MEDIA_ROOT = BASE_DIR / 'uploads'
+
+
+# LOGIN_URL = '/login'
+# LOGIN_REDIRECT_URL = '/products'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
