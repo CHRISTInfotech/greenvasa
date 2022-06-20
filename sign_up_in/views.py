@@ -84,6 +84,17 @@ def g_sign_up(request):
 				form.save()
 				user = form.cleaned_data.get('username')
 				messages.success(request, 'Account was created for ' + user)
+				Name = request.POST["username"]
+				Email = request.POST["email"]
+				Mobile_Number = request.POST["phone"]
+				# Password = request.POST.get("confirm_password", False)
+
+				sign_up_data = G_Sign_up()
+				sign_up_data.user_name = Name
+				sign_up_data.email = Email
+				sign_up_data.mobile_number = Mobile_Number
+				# sign_up_data.password = Password
+				sign_up_data.save()
 
 				return redirect('sign_up_in:g_login')
 			
@@ -101,6 +112,7 @@ def g_login(request):
 			Email = request.POST.get('email_address')
 			password =request.POST.get('password')
 
+
 			print(Email)
 			print(password)
 
@@ -110,7 +122,8 @@ def g_login(request):
 				print("Login success")
 				login(request, user)
 				request.session["login_status"]=True
-				request.session["user_email"]=Email
+				request.session["user_email"]=user.email
+				print(request.session["user_email"])
 				if 'next' in request.POST:
 					return redirect(request.POST.get('next'))
 				else:

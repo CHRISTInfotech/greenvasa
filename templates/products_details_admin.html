@@ -189,21 +189,25 @@
                   <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="">
                 </a> </span>
               </li>
+              {% if product.product_image2 != "False" %} 
               <li>
                 <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image2}}" target="imgBox">
                   <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image2}}" alt="">
                 </a>
               </li>
+              {% endif %}
               <li>
                 <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image3}}" target="imgBox">
                   <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image3}}" alt="">
                 </a>
               </li>
+              {% if product.product_image4 != "False" %}
               <li>
                 <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image4}}" target="imgBox">
                   <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image4}}" alt="">
                 </a>
               </li>
+              {% endif %}
             </ul>
           </div>
 
@@ -243,10 +247,20 @@
           <div class="row p-5">
             <form action="" method="post">
               {% csrf_token %}
-              <div class="col-8"></div>
-              <div class="col-4">
-                <button class="btn btn-primary" style="background-color: #005C45; " type="submit">Approve product</button>
+          <div class="row">
+            <div class="col-7">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="remarks" id="floatingInput" placeholder="NA">
+                <label for="floatingInput">Any Remarks</label>
               </div>
+            </div>
+            <div class="col-2 p-2">
+              <button class="btn btn-primary" name="canceled" style="background-color: #e04444; " type="submit">Cancel</button>
+            </div>
+            <div class="col-3 p-2">
+              <button class="btn btn-primary" name="approved" style="background-color: #005C45; " type="submit">Approve</button>
+            </div>
+          </div>
               
             </form>
           </div>

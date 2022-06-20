@@ -177,78 +177,57 @@
 
 
 
-      <div class="">
+
         <div class="row m-5">
-          
-         <div class="col-6">
+          <div class="col">
+            <div class="row">
+              <h3>Admin Dashboard</h3>
 
-          <div class="col-3">
-            <ul class="thumb">
-              <li>
-                <span> <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image1}}"  target="imgBox"> 
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="">
-                </a> </span>
-              </li>
-              {% if product.product_image2 != "False" %} 
-              <li>
-                <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image2}}" target="imgBox">
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image2}}" alt="">
-                </a>
-              </li>
-              {% endif %} 
-              <li>
-                <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image3}}" target="imgBox">
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image3}}" alt="">
-                </a>
-              </li>
-              {% if product.product_image4 != "False" %} 
-              <li>
-                <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image4}}" target="imgBox">
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image4}}" alt="">
-                </a>
-              </li>
-              {% endif %} 
-            </ul>
-          </div>
+              <div class="m-4 justify-content-center">
+                <div class="row justify-content-center">
+                 
+                  
+                  <div class="col-4 shadow justify-content-center" style="width: 450px; height: 220px; text-align: center; background-color: white; border: solid 2px #005C45; border-radius: 5px; margin-right: 15px; margin-top: 10px;">
+                    <a href="{% url 'main:admin_products' %}" style="text-decoration: none; color: inherit;">
+                      <div class="row pt-5" style="text-align: center;">
+                        <h4>Products that need your verification</h4>
+                      </div>
+                      <div class="row" style="text-align: center;">
+                        <p style="color: #005C45; font-size:4rem; font-weight: 500;"> {{all_pending}} </p>
+                      </div>
+                  </a>
+                  </div>
+                  
+                  <div class="col-4 shadow justify-content-center" style="width: 450px; height: 220px; text-align: center; background-color: white; border: solid 2px #005C45; border-radius: 5px; margin-right: 15px; margin-top: 10px;">
+                    <a href="{% url 'main:admin_deleted_products' %}" style="text-decoration: none; color: inherit;">
+                      <div class="row pt-5" style="text-align: center;">
+                        <h4>Products that has been deleted</h4>
+                      </div>
+                      <div class="row" style="text-align: center;">
+                        <p style="color: #005C45; font-size:4rem; font-weight: 500;"> {{all_deleted_prod}} </p>
+                      </div>
+                  </a>
+                  </div>
 
-          <div class="imgBox col-9">
-            <img style="" class=".imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="">
-          </div>
-
-         </div>
-
-         <div class="col-6">
-          <div class="row">
-            <span class="row" style="color: black; font-size: 1.5rem; font-weight: 500;">
-              {{product.product_name}}
-            </span>
-            <span class="row" style="color: #005C45; font-size:2rem; font-weight: 500;">
-              ₹ {{product.expected_price}}
-            </span>
-            <span class="row" style="font-size: 1.2rem; max-height: 90px; white-space: wrap; overflow: hidden; text-overflow: ellipsis;">
-              {{product.product_description}}
-            </span>
-
-          </div>
-
-          <div class="row" style="margin-top: 20px;">
-            <div class="card" style="padding-left: 0; padding-right: 0;" >
-              <h5 class="card-header" style="background-color: #a5fae5; color: black; font-weight: 600;">Contact Details</h5>
-              <div class="card-body">
-                <h5 class="card-title">Name: {{seller_details.user_name}}</h5>
-                <h5 class="card-title">Email: {{seller_details.email}}</h5>
-                <h5 class="card-title">Mobile Number: {{seller_details.mobile_number}}</h5>
-                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                  <div class="col-4 shadow justify-content-center" style="width: 450px; height: 220px; text-align: center; background-color: white; border: solid 2px #005C45; border-radius: 5px; margin-right: 15px; margin-top: 10px;">
+                    <a href="{% url 'main:admin_live_products' %}" style="text-decoration: none; color: inherit;">
+                      <div class="row pt-5" style="text-align: center;">
+                        <h4>Products that are live now</h4>
+                      </div>
+                      <div class="row" style="text-align: center;">
+                        <p style="color: #005C45; font-size:4rem; font-weight: 500;"> {{all_approved}} </p>
+                      </div>
+                  </a>
+                  </div>
+                
+                  
+                </div>
               </div>
+
             </div>
           </div>
-
-         </div>
-
-
         </div>
-      </div>
+
 
 
       <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>

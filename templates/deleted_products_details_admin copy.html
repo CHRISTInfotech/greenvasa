@@ -244,6 +244,28 @@
             </div>
           </div>
 
+          <div class="row p-5">
+            <form action="" method="post">
+              {% csrf_token %}
+          <div class="row">
+            <div class="col-7">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="remarks" id="floatingInput" placeholder="NA">
+                <label for="floatingInput">Any Remarks</label>
+              </div>
+            </div>
+            <div class="col-2 p-2">
+              <button class="btn btn-primary" name="deleted" style="background-color: #e04444; " type="submit">Delete Permenantly</button>
+            </div>
+            <div class="col-3 p-2">
+              <button class="btn btn-primary" name="approved" style="background-color: #005C45; " type="submit">Approve</button>
+            </div>
+          </div>
+              
+            </form>
+          </div>
+
+
          </div>
 
 

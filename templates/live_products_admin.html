@@ -19,6 +19,13 @@
 
 
     <style>
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Border color is optional */  
+
+}
         select {
             width: 100px;
             /* padding: 5px 35px 5px 5px; */
@@ -47,66 +54,11 @@
                     padding: 5px\9;
                 }
             }
-
-            .imgSlideContainer {
-              position: absolute;
-              margin-top: 210px;
-              /* top: 40%; */
-              left: 20%;
-              transform: translate(-50%, -50%);
-              width: 500px;
-              height: 400px;
-
-            }
-
-            ul.thumb {
-              margin: 0 auto;
-              padding: 0;
-              float: left;
-            }
-
-            ul.thumb li {
-              list-style: none;
-              margin: 5px;
-              width: 100px;
-              height: 100px;
-              border: 1px solid rgba(0,0,0,.2);
-              overflow: hidden;
-            }
-
-            ul.thumb li img {
-              width: 100%;
-            }
-
-            .imgBox {
-              float: left;
-              width: 35vw;
-              height: 35vw;
-              /* max-height: 100%;
-               max-width: 100%; */
-              margin: 5px;
-              border: 1px solid rgba(0,0,0,.2);
-              overflow: hidden;
-
-            }
-
-            .imgBox img {
-              width: 100%;
-              min-height: fit-content;
-            }
-
-            .imgprop {
-              /* height:80px;
-               width: 80px; */
-               min-height: 100%;
-               max-height: fit-content;
-               min-width: 100%;
-            }
     </style>
 
 
 </head>
-<body>
+<body style="background-color: #b8fbea;">
     
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #005C45;">
         <div class="container-fluid">
@@ -143,8 +95,7 @@
           </button>
           <!-- <div style="margin-left: 5vw;"></div> -->
 
-
-        
+          
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="color: aliceblue; font-size: 20px; font-weight: bold;">
               <li class="nav-item px-2">
@@ -156,8 +107,11 @@
               <li class="nav-item px-2">
                 <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'main:aboutUs' %}">About Us</a>
               </li>
-              <li class="nav-item px-2">
-                {% if user.is_authenticated %}
+              <!-- <li class="nav-item px-2">
+                <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'sign_up_in:g_login' %}">Login</a>
+              </li> -->
+              <li class="nav-item px-2"></li>
+              {% if user.is_authenticated %}
              <!-- Hi {{ user.username }}! -->
              <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'sign_up_in:logout' %}">Log Out</a></p>
             {% else %}
@@ -177,90 +131,43 @@
 
 
 
-      <div class="">
-        <div class="row m-5">
+      <div class="m-4 justify-content-center">
+        <div class="row pb-4"><h3>Live Products</h3></div>
+        <div class="row justify-content-center">
+          {% for product in products %}
           
-         <div class="col-6">
-
-          <div class="col-3">
-            <ul class="thumb">
-              <li>
-                <span> <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image1}}"  target="imgBox"> 
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="">
-                </a> </span>
-              </li>
-              {% if product.product_image2 != "False" %} 
-              <li>
-                <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image2}}" target="imgBox">
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image2}}" alt="">
-                </a>
-              </li>
-              {% endif %} 
-              <li>
-                <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image3}}" target="imgBox">
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image3}}" alt="">
-                </a>
-              </li>
-              {% if product.product_image4 != "False" %} 
-              <li>
-                <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image4}}" target="imgBox">
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image4}}" alt="">
-                </a>
-              </li>
-              {% endif %} 
-            </ul>
-          </div>
-
-          <div class="imgBox col-9">
-            <img style="" class=".imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="">
-          </div>
-
-         </div>
-
-         <div class="col-6">
-          <div class="row">
-            <span class="row" style="color: black; font-size: 1.5rem; font-weight: 500;">
-              {{product.product_name}}
-            </span>
-            <span class="row" style="color: #005C45; font-size:2rem; font-weight: 500;">
-              ₹ {{product.expected_price}}
-            </span>
-            <span class="row" style="font-size: 1.2rem; max-height: 90px; white-space: wrap; overflow: hidden; text-overflow: ellipsis;">
-              {{product.product_description}}
-            </span>
-
-          </div>
-
-          <div class="row" style="margin-top: 20px;">
-            <div class="card" style="padding-left: 0; padding-right: 0;" >
-              <h5 class="card-header" style="background-color: #a5fae5; color: black; font-weight: 600;">Contact Details</h5>
-              <div class="card-body">
-                <h5 class="card-title">Name: {{seller_details.user_name}}</h5>
-                <h5 class="card-title">Email: {{seller_details.email}}</h5>
-                <h5 class="card-title">Mobile Number: {{seller_details.mobile_number}}</h5>
-                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a> -->
+          <div class="col-4 shadow" style="width: 450px; height: 220px; background-color: white; border: solid 2px #005C45; border-radius: 5px; margin-right: 15px; margin-top: 10px;">
+            <a href="/admin/live_products_details/{{ product.id }}" style="text-decoration: none; color: inherit;">
+            <div class="row">
+              <div class="col-5 center" style="height: 220px;">
+                <div class="row" style="width: max-width; height: max-height;">
+                  <img src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="" style="width: 150px; height:fit-content">
+                </div>
+              </div>
+              <div class="col-7" style="height: 220px; display: flex; align-items: center; justify-content: center; ">
+                <div class="row">
+                  <span class="row" style="color: black; font-size: 1.125rem; font-weight: 500;">
+                    {{product.product_name}}
+                  </span>
+                  <span class="row" style="color: #005C45; font-size:1.563rem; font-weight: 500;">
+                    ₹ {{product.expected_price}}
+                  </span>
+                  <span class="row" style="font-size: 0.875rem; max-height: 90px; white-space: wrap; overflow: hidden; text-overflow: ellipsis;">
+                    {{product.product_description}}
+                  </span>
+                </div>
               </div>
             </div>
+            <!-- {{product.product_name}} -->
+            <!-- <img src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="" style="width: 150px; height:fit-content"> -->
+          </a>
           </div>
-
-         </div>
-
-
+        
+          {% endfor %}
         </div>
       </div>
 
 
-      <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
-      <script type="text/javascript">
-        $(document).ready(function(){
-          $('.thumb a').mouseover(function(e){
-            e.preventDefault();
-            $('.imgBox img').attr("src", $(this).attr("link"));
-          })
-        })
-      </script>
 
 
 </body>
