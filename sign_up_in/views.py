@@ -126,6 +126,8 @@ def g_login(request):
 				print(request.session["user_email"])
 				if 'next' in request.POST:
 					return redirect(request.POST.get('next'))
+				elif user.is_staff == 1:
+					return redirect('main:admin_dashboard')
 				else:
 					return redirect('seller:seller')
 			else:
