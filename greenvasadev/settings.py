@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_DIR = os.path.join(BASE_DIR, 'gstatic')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -77,22 +77,10 @@ WSGI_APPLICATION = 'greenvasadev.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'db.sqlite3'
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-'ENGINE': 'django.db.backends.mysql',
-'NAME': 'marketplacedemo',
-'USER': 'root',
-'PASSWORD': 'Dell@mysql',
-'HOST': 'localhost',
-'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3'
     }
 }
 
@@ -120,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -129,13 +117,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/gstatic/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'gstatic')
 # STATIC_ROOT = '/home/u1r60cp6vyvs/public_html/gstatic/'
 
 STATICFILES_DIRS = (
-	'/home/u1r60cp6vyvs/greenvasa/static',
-    # STATIC_DIR,
+	# '/home/u1r60cp6vyvs/greenvasa/gstatic',
+    BASE_DIR / "gstatic",
 )
 
 MEDIA_URL = '/uploads/'
