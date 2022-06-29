@@ -18,8 +18,10 @@ def index(request):
     return render(request,'landing.html')
 
 def aboutUs(request):
-    # request.session["login_status"]=False
     return render(request,'about_us.html')
+
+def rules(request):
+    return render(request,'rules_regulations.html')
 
 def products(request):
     product = Approved_Product_List.objects.all()

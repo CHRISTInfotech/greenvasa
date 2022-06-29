@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container mt-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item "><a class="text-decoration-none" href="{% url 'main:index' %}">Greenvasa</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Rules and Regulations</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container"
+         style="background-image: url({% static 'img/logo.png' %});  background-repeat: no-repeat; background-position: center;background-size: cover;">
+        <div class="row mt-2 lh-lg" style="backdrop-filter: brightness(300%);">
+            <div class="col-12 text-center fw-bolder fs-1">
+                Rules & Regulations
+            </div>
+            <div class="col-12">
+                <div class="fs-4 fw-bolder">
+                    General Rules
+                </div>
+                <ul>
+                    <li>
+                        Only students, staff who are a part of CU Lavasa will have access to the web link for posting
+                        their products using their email address.
+                    </li>
+                    <li>
+                        Transaction details for all exchanges must be maintained and recorded.
+                    </li>
+                    <li>
+                        There should be a mutual consensus between buyer and seller for the exchange.
+                    </li>
+                    <li>
+                        Greenvasa only offers a technology platform to facilitate the exchange, buyer and seller will
+                        agree both price and delivery amongst themselves.
+                    </li>
+                    <li>
+                        The project aims at reducing, reusing goods bought, kindly keep the same in mind.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-12">
+                <div class="fs-4 fw-bolder">
+                    Rules for Buyers
+                </div>
+                <ul>
+                    <li>
+                        Payment terms to be decided between seller and buyer.
+                    </li>
+                    <li>
+                        Buyer should check the product thoroughly before making the payment. The seller is not liable to
+                        return the money once the payment is made.
+                    </li>
+                    <li>
+                        Buyer should maintain the Transaction ids of the payments for future references.
+                    </li>
+                    <li>
+                        Buyers should ensure that they check the products thoroughly; the university does not warrant,
+                        endorse, guarantee, or assume responsibility for any product or service advertised or offered by
+                        a third party through the platform.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-12">
+                <div class="fs-4 fw-bolder">
+                    Rules for Sellers
+                </div>
+                <ul>
+                    <li>
+                        The seller must compulsorily provide a detailed description of the product they wish to sell.
+                    </li>
+                    <li>
+                        Sellers should post genuine products only.
+                    </li>
+                    <li>
+                        Sellers should not post products that are in bad condition.
+                    </li>
+                    <li>
+                        Sellers are expected to quote a feasible and relatively lower price than the new product’s
+                        price.
+                    </li>
+                    <li>
+                        Sellers should remove their product post once it is sold.
+                    </li>
+                    <li>
+                        Sellers are expected to check their posts in the website frequently to know if any buyer is
+                        interested.
+                    </li>
+                    <li>
+                        Sellers should ensure that genuine details are provided for buyers to contact regarding the
+                        product.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
