@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -10,13 +11,16 @@ def user_directory_path2(instance, filename):
 
 
 class UserDetails(models.Model):
-    user_id = models.CharField(max_length=255, blank=False, null=False)
+    user_id = models.OneToOneField(User,on_delete=models.CASCADE)
     user_name = models.CharField(max_length=100, blank=False, null=False)
     email = models.CharField(max_length=100, blank=False, null=False)
     mobile_number = models.CharField(max_length=12, blank=False, null=False)
 
     class Meta:
         db_table = 'registration'
+
+    def __str__(self):
+        return self.user_name
 
 
 class ProductsTable(models.Model):
@@ -38,3 +42,6 @@ class ProductsTable(models.Model):
 
     class Meta:
         db_table = 'product_table'
+
+    def __str__(self):
+        return self.product_id

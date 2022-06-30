@@ -12,6 +12,15 @@
         </nav>
     </div>
 
+    {% if error %}
+        <div class="container mt-3">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error!</strong> {{ error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    {% endif %}
+
 
     <div class="container mt-5" style="">
         <div class="row p-5 shadow" style="background-color: white; border: solid 2px #005C45; border-radius: 5px;">
@@ -91,7 +100,8 @@
                     </button>
                 </div>
             </form>
-            <small class="text-muted">Your product will be listed in the app once the admin approves the product details.</small>
+            <small class="text-muted">Your product will be listed in the app once the admin approves the product
+                details.</small>
         </div>
 
     </div>

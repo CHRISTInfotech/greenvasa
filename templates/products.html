@@ -2,48 +2,51 @@
 {% load static %}
 {% block content %}
 
-        <div class="container mt-5">
+    <div class="container mt-5">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item "><a class="text-decoration-none" href="{% url 'main:index' %}">Greenvasa</a></li>
+                <li class="breadcrumb-item "><a class="text-decoration-none" href="{% url 'main:index' %}">Greenvasa</a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">Products</li>
             </ol>
         </nav>
     </div>
 
-      <div class="m-4 justify-content-center">
+    <div class="m-4 justify-content-center">
         <div class="row justify-content-center">
-          {% for product in products %}
-          
-          <div class="col-4 shadow" style="width: 450px; height: 220px; background-color: white; border: solid 2px #005C45; border-radius: 5px; margin-right: 15px; margin-top: 10px;">
-            <a href="/products_details/{{ product.id }}" style="text-decoration: none; color: inherit;">
-            <div class="row">
-              <div class="col-5 center" style="height: 220px;">
-                <div class="row" style="width: max-width; height: max-height;">
-                  <img src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="" style="width: 150px; height:fit-content">
-                </div>
-              </div>
-              <div class="col-7" style="height: 220px; display: flex; align-items: center; justify-content: center; ">
-                <div class="row">
+            {% for product in products %}
+
+                <div class="col-4 shadow"
+                     style="width: 450px; height: 220px; background-color: white; border: solid 2px #005C45; border-radius: 5px; margin-right: 15px; margin-top: 10px;">
+                    <a href="/products_details/{{ product.id }}" style="text-decoration: none; color: inherit;">
+                        <div class="row">
+                            <div class="col-5 center" style="height: 220px;">
+                                <div class="row" style="width: 100%;">
+                                    <img src="{{ BASIC_DIR }}/uploads/{{ product.product_image1 }}" alt=""
+                                         style="width: 150px; height:fit-content">
+                                </div>
+                            </div>
+                            <div class="col-7"
+                                 style="height: 220px; display: flex; align-items: center; justify-content: center; ">
+                                <div class="row">
                   <span class="row" style="color: black; font-size: 1.125rem; font-weight: 500;">
-                    {{product.product_name}}
+                    {{ product.product_name }}
                   </span>
-                  <span class="row" style="color: #005C45; font-size:1.563rem; font-weight: 500;">
-                    ₹ {{product.expected_price}}
+                                    <span class="row" style="color: #005C45; font-size:1.563rem; font-weight: 500;">
+                    ₹ {{ product.expected_price }}
                   </span>
-                  <span class="row" style="font-size: 0.875rem; max-height: 90px; white-space: wrap; overflow: hidden; text-overflow: ellipsis;">
-                    {{product.product_description}}
+                                    <span class="row"
+                                          style="font-size: 0.875rem; max-height: 90px; overflow: hidden; text-overflow: ellipsis;">
+                    {{ product.product_description }}
                   </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-              </div>
-            </div>
-            <!-- {{product.product_name}} -->
-            <!-- <img src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="" style="width: 150px; height:fit-content"> -->
-          </a>
-          </div>
-        
-          {% endfor %}
+
+            {% endfor %}
         </div>
-      </div>
+    </div>
 
 {% endblock content %}

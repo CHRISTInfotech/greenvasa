@@ -1,9 +1,12 @@
+from uuid import uuid4
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
+from django.utils import timezone
+
 from greenvasadev.settings import BASE_DIR
 from main.forms import CreateUserForm
 from main.models import ProductsTable, UserDetails
@@ -91,6 +94,7 @@ def g_login(request):
 def logoutUser(request):
     logout(request)
     return redirect('/login')
+
 
 def products(request):
     product = ProductsTable.objects.all()
@@ -276,92 +280,53 @@ def deleted_product_details_admin(request, id):
 
 
 @login_required(login_url='/login')
-def productAdded(request):
-    # request.session["login_status"]=False
-    # login_status = request.session["login_status"]
-    # if login_status:
-    return render(request,'product_added.html')
-    # else:
-    #     return redirect('/products/')
+def productAdded(request, product):
+    context = {
+        'product': ProductsTable.objects.get(product_id=product),
+        'BASE_DIR': BASE_DIR
+    }
+    return render(request, 'product_added.html', context)
+
 
 @login_required(login_url='/login')
 def g_seller(request):
-    # login_status = request.session["login_status"]
-    # print(request.session["user_name"])
-    # print(request.session["user_email"])
+    if request.method == 'POST' and request.user.is_authenticated:
+        try:
+            user_id = request.session["user_email"]
+            productName = request.POST.get("product_name", False)
+            productCategory = request.POST.get("product_category", False)
+            productPrice = request.POST.get("product_price", False)
+            productDescription = request.POST.get("product_description", False)
+            productImage1 = request.FILES.get("pro-image1", False)
+            productImage2 = request.FILES.get("pro-image2", False)
+            productImage3 = request.FILES.get("pro-image3", False)
+            productImage4 = request.FILES.get("pro-image4", False)
+            product_id = uuid4()
 
-    # if login_status == True:
-    #     # print(request.session["user_email"])
-    if request.method == 'POST':
-        user_id = request.session["user_email"]
-        productName = request.POST.get("product_name", False)
-        productCategory = request.POST.get("product_category", False)
-        productPrice = request.POST.get("product_price", False)
-        productDescription = request.POST.get("product_description", False)
-        productImage1 = request.FILES.get("pro-image1", False)
-        productImage2 = request.FILES.get("pro-image2", False)
-        productImage3 = request.FILES.get("pro-image3", False)
-        productImage4 = request.FILES.get("pro-image4", False)
-        # print(productName)
-        # print(productImage1)
-        # print(productImage2)
-        # print(productImage3)
-        # print(productImage4)
+            product_Table = ProductsTable()
+            product_Table.product_id = product_id
+            product_Table.user_id = user_id
+            product_Table.product_name = productName
+            product_Table.category = productCategory
+            product_Table.expected_price = productPrice
+            product_Table.product_description = productDescription
+            product_Table.product_created_on = timezone.now()
+            product_Table.product_image1 = productImage1
+            product_Table.product_image2 = productImage2
+            product_Table.product_image3 = productImage3
+            product_Table.product_image4 = productImage4
+            product_Table.status = "WAITING"
+            product_Table.status_updated_on = timezone.now()
+            product_Table.remark = ""
 
-        product_Table = ProductsTable()
-        product_Table.user_id = user_id
-        product_Table.product_name = productName
-        product_Table.product_description = productDescription
-        product_Table.expected_price = productPrice
-        product_Table.category = productCategory
-        product_Table.product_image1 = productImage1
-        product_Table.product_image2 = productImage2
-        product_Table.product_image3 = productImage3
-        product_Table.product_image4 = productImage4
+            product_Table.save()
 
-        product_Table.save()
+            return redirect('main:success', product_id)
+        except:
+            context = {
+                "error": "Error in adding product, please try after sometime."
+            }
+            return render(request, 'seller_page.html',context)
 
-        return redirect('/g/seller/submitted')
-
-    return render(request,'seller_page.html')
-
-@login_required(login_url='/login')
-def g_app_seller(request):
-    # login_status = request.session["login_status"]
-    # print(request.session["user_name"])
-    # print(request.session["user_email"])
-
-    # if login_status == True:
-    #     # print(request.session["user_email"])
-    if request.method == 'POST':
-        user_id = request.session["user_email"]
-        productName = request.POST.get("product_name", False)
-        productCategory = request.POST.get("product_category", False)
-        productPrice = request.POST.get("product_price", False)
-        productDescription = request.POST.get("product_description", False)
-        productImage1 = request.FILES.get("pro-image1", False)
-        productImage2 = request.FILES.get("pro-image2", False)
-        productImage3 = request.FILES.get("pro-image3", False)
-        productImage4 = request.FILES.get("pro-image4", False)
-        # print(productName)
-        # print(productImage1)
-        # print(productImage2)
-        # print(productImage3)
-        # print(productImage4)
-
-        product_Table = ProductsTable()
-        product_Table.user_id = user_id
-        product_Table.product_name = productName
-        product_Table.product_description = productDescription
-        product_Table.expected_price = productPrice
-        product_Table.category = productCategory
-        product_Table.product_image1 = productImage1
-        product_Table.product_image2 = productImage2
-        product_Table.product_image3 = productImage3
-        product_Table.product_image4 = productImage4
-
-        product_Table.save()
-
-        return redirect('/g/seller/submitted')
-
-    return render(request,'seller_page.html')
+    else:
+        return render(request, 'seller_page.html')
