@@ -8,6 +8,7 @@
     {% load static %}
     <title>Greenvasa</title>
 
+    <link rel="icon" href="{% static 'img/logo.png' %}">
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lusitana">
@@ -18,7 +19,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
-
 
     <style>
         .button {
@@ -81,24 +81,28 @@
 
 <div class="d-flex justify-content-center align-items-center text-center">
     <div>
-        <h1 class="card-title text-center mb-4 fw-bold fs-20" style="color: white; font-family: Lusitana;">GREENVASA <sub
-            style=" font-family: 'Satisfy';">making living sustainable</sub></h1>
-    <img class="d-block mx-auto mb-4" src="{% static 'img/logo1.png' %}" alt="" width="250" height="230">
-    <h1 class="display-5 fw-bold" style="color: aliceblue;">What are you looking for?</h1>
-    <div class="col-lg-6 mx-auto">
-        <!-- <p class="lead mb-4" style="color: aliceblue;">What are you looking for?</p> -->
-        <div class="d-grid gap-2 mt-5 d-sm-flex justify-content-sm-center">
-            <!-- <button type="button" class="btn btn-primary btn-lg px-4 gap-3 fw-bold" style="background-color: #0D644E; border: #0D644E;">BUY</button> -->
-            <a href="{% url 'main:products' %}">
-                <button class="button fw-bold" style="vertical-align:middle"><span>BUY</span></button>
-            </a>
-            <a href="{% url 'main:g_login' %}">
-                <button class="button fw-bold" style="vertical-align:middle"><span>SELL</span></button>
-            </a>
+        <h1 class="card-title text-center mb-4 fw-bold fs-20" style="color: white; font-family: Lusitana;">GREENVASA
+            <sub
+                    style=" font-family: 'Satisfy';">making living sustainable</sub></h1>
+        <img class="d-block mx-auto mb-4" src="{% static 'img/logo1.png' %}" alt="" width="250" height="230">
+        <h1 class="display-5 fw-bold" style="color: aliceblue;">What are you looking for?</h1>
+        <div class="col-lg-6 mx-auto">
+            <!-- <p class="lead mb-4" style="color: aliceblue;">What are you looking for?</p> -->
+            <div class="d-grid gap-2 mt-5 d-sm-flex justify-content-sm-center">
+                <!-- <button type="button" class="btn btn-primary btn-lg px-4 gap-3 fw-bold" style="background-color: #0D644E; border: #0D644E;">BUY</button> -->
+                <a href="{% url 'main:products' %}">
+                    <button class="button fw-bold" style="vertical-align:middle"><span>BUY</span></button>
+                </a>
+                <a href="{% url 'main:seller' %}">
+                    <button class="button fw-bold" style="vertical-align:middle"><span>SELL</span></button>
+                </a>
+            </div>
         </div>
-    </div>
     </div>
 </div>
 
+<div class="text-white text-center fixed-bottom p-3"> Powered by CHRIST Infotech | &copy; CHRIST Infotech | With
+    &hearts; CHRIST Lavasa
+</div>
 </body>
 </html>
