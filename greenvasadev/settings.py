@@ -40,8 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    'sign_up_in',
-    'seller',
 ]
 
 MIDDLEWARE = [
@@ -84,7 +82,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -122,13 +119,12 @@ STATIC_URL = '/gstatic/'
 # STATIC_ROOT = '/home/u1r60cp6vyvs/public_html/gstatic/'
 
 STATICFILES_DIRS = (
-	# '/home/u1r60cp6vyvs/greenvasa/gstatic',
+    # '/home/u1r60cp6vyvs/greenvasa/gstatic',
     BASE_DIR / "gstatic",
 )
 
 MEDIA_URL = '/uploads/'
 MEDIA_ROOT = BASE_DIR / 'uploads'
-
 
 # LOGIN_URL = '/login'
 # LOGIN_REDIRECT_URL = '/products'

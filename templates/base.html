@@ -61,7 +61,7 @@
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link active" aria-current="page" style="color: aliceblue;"
-                       href="{% url 'seller:seller' %}">Sell</a>
+                       href="{% url 'main:index' %}">Sell</a>
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link active" aria-current="page" style="color: aliceblue;"
@@ -87,7 +87,7 @@
                                     </li>
                                 {% endif %}
 
-                                <li><a class="dropdown-item" href="{% url 'sign_up_in:logout' %}">Logout</a></li>
+                                <li><a class="dropdown-item" href="{% url 'main:logout' %}">Logout</a></li>
 
                             </ul>
                         </li>
@@ -95,7 +95,7 @@
                     {% else %}
                         <!-- <p>You are not logged in</p> -->
                         <a class="nav-link active" aria-current="page" style="color: aliceblue;"
-                           href="{% url 'sign_up_in:g_login' %}">Log In</a>
+                           href="{% url 'main:g_login' %}">Log In</a>
                     {% endif %}
                 </li>
             </ul>

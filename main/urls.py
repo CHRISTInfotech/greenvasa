@@ -6,6 +6,9 @@ app_name='main'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('login/', views.g_login, name='g_login'),
+    path('sign_up/', views.g_sign_up, name='g_sign_up'),
+    path('logout/', views.logoutUser, name='logout'),
     path('products/', views.products, name='products'),
     path('about-us/', views.aboutUs, name='aboutUs'),
     path('rules/', views.rules, name='rules'),

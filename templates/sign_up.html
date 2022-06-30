@@ -1,119 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <title>Greenvasa</title>
-
-
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lusitana">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    
-
-    <style>
-        .btn-login {
-          font-size: 0.9rem;
-          letter-spacing: 0.05rem;
-          padding: 0.75rem 1rem;
-        }
-
-        .btn-google {
-          color: white !important;
-          background-color: #ea4335;
-        }
-
-        .btn-facebook {
-          color: white !important;
-          background-color: #3b5998;
-        }
-
-
-        .success-message{
-            color:green
-        }
-        .error-message{
-            color:red;
-        }
-
-   </style>
-</head>
-<body style="background-color: #005C45;">
-
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 
     <div class="px-4 py-5 my-5 mt-0 pt-0 text-center">
         <img class="d-block mx-auto" src="{% static 'img/logo1.png' %}" alt="" width="250" height="230">
-        <!-- <p class="" style="color: aliceblue; font-size: 25px;">Enter the Details</p> -->
         <div class="container" >
           <div class="row">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-              <div class="card border-0 shadow rounded-3 my-5 mt-0" style="background-color: #0D644E; border-radius: 5px;">
+              <div class="card border-0 shadow rounded-3 my-5 mt-0" >
                 <div class="card-body p-4 p-sm-5" >
-                  <!-- <h5 class="card-title text-center mb-5 fw-bold fs-5" style="color: aliceblue;">Sign Up to Greenvasa</h5> -->
-                  <h5 class="card-title text-center mb-5 fw-bold fs-5" style="color: white; font-family: Lusitana;">GREENVASA <sub style=" font-family: 'Satisfy';">making living sustainable</sub></h5>
+                  <h5 class="card-title text-center mb-5 fw-bold fs-5" style="font-family: Lusitana;">GREENVASA <sub style=" font-family: 'Satisfy';">making living sustainable</sub></h5>
 
-                  <!-- <div class="d-flex justify-content-center form_container">
-
-                    <form method="POST" action="">
-                      {% csrf_token %}
-                      <div class="input-group mb-3">
-                        <div class="input-group-append">
-                          <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        </div>
-                        {{form.username}}
-                      </div>
-                      <div class="input-group mb-2">
-                        <div class="input-group-append">
-                          <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
-                        </div>
-                        {{form.email}}
-                      </div>
-                      <div class="input-group mb-2">
-                        <div class="input-group-append">
-                          <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        </div>
-                        {{form.password1}}
-                      </div>
-                      <div class="input-group mb-2">
-                        <div class="input-group-append">
-                          <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        </div>
-                        {{form.password2}}
-                      </div>
-          
-          
-          
-                         <div class="d-flex justify-content-center mt-3 login_container">
-                         <input class="btn login_btn" type="submit" value="Register Account">
-                         </div>
-          
-                    </form>
-                  </div> -->
-
-                  <!-- <div class="form-group">
-                    <form action="" method="post">
-                      {% csrf_token %}
-                      {{ form.as_p }}
-                      <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
-                        Up</button>
-                    </form>
-                  </div> -->
-
-
-
-
-                  
                   <form method="post" >
                     {% csrf_token %}
                     <div class="form-floating mb-3">
@@ -149,52 +46,9 @@
                     </div>
                     <hr class="my-4">
                     <div class="row">
-                        <a href="{% url 'sign_up_in:g_login' %}">Already have an account?</a>
+                        <a href="{% url 'main:g_login' %}">Already have an account?</a>
                     </div>
                   </form>
-
-                  
-
-<!-- 
-                  <form method="post" >
-                    {% csrf_token %}
-                    <div class="form-floating mb-3">
-                      <input type="text" class="form-control" name="name" id="floatingInput" placeholder="name@example.com">
-                      
-                      <label for="floatingInput">Name</label>
-                      {{form.username}}
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input type="email" class="form-control" name="email_address" id="floatingInput" placeholder="name@example.com">
-                      <label for="floatingInput">Email address</label>
-                      {{form.email}}
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input type="number" class="form-control" name="mobile_number" id="floatingInput" placeholder="name@example.com">
-                      <label for="floatingInput">Mobile Number</label>
-                      {{form.phone}}
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-                      <label for="floatingPassword">Password</label>
-                      {{form.password1}}
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input type="password" class="form-control" name="confirm_password" id="confirmpassword" placeholder="Confirm Password">
-                      <div class="form-text confirm-message"></div>
-                      <label for="floatingPassword">Confirm Password</label>
-                      {{form.password2}}
-                    </div>
-                    <div class="d-grid">
-                      <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
-                        Up</button>
-                    </div>
-                    <hr class="my-4">
-                    <div class="row">
-                        <a href="{% url 'sign_up_in:g_login' %}">Already have an account?</a>
-                    </div>
-                  </form> -->
-
                 </div>
               </div>
             </div>
@@ -230,8 +84,4 @@
       });
   </script>
 
-
-
-
-</body>
-</html>
+{% endblock content %}
