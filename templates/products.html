@@ -14,38 +14,89 @@
 
     <div class="m-4 justify-content-center">
         <div class="row justify-content-center">
-            {% for product in products %}
+            {% if products %}
+                {% for product in products %}
 
-                <div class="col-4 shadow"
-                     style="width: 450px; height: 220px; background-color: white; border: solid 2px #005C45; border-radius: 5px; margin-right: 15px; margin-top: 10px;">
-                    <a href="/products_details/{{ product.id }}" style="text-decoration: none; color: inherit;">
-                        <div class="row">
-                            <div class="col-5 center" style="height: 220px;">
-                                <div class="row" style="width: 100%;">
-                                    <img src="{{ BASIC_DIR }}/uploads/{{ product.product_image1 }}" alt=""
-                                         style="width: 150px; height:fit-content">
+                    <div class="col-4 shadow p-3 m-2">
+                        <a href="/products_details/{{ product.id }}" class="text-decoration-none">
+                            <div class="row">
+                                <div class="col-5">
+                                    <div id="carouselExampleControls-{{ product.pk }}" class="carousel slide"
+                                         data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            {% if product.product_image1 %}
+                                                <div class="carousel-item active">
+                                                    <img src="{{ BASIC_DIR }}/uploads/{{ product.product_image1 }}"
+                                                         alt=""
+                                                         class="d-block w-100">
+                                                </div>
+                                            {% endif %}
+                                            {% if product.product_image2 %}
+                                                <div class="carousel-item">
+                                                    <img src="{{ BASIC_DIR }}/uploads/{{ product.product_image1 }}"
+                                                         alt=""
+                                                         class="d-block w-100">
+                                                </div>
+                                            {% endif %}
+                                            {% if product.product_image3 %}
+                                                <div class="carousel-item">
+                                                    <img src="{{ BASIC_DIR }}/uploads/{{ product.product_image1 }}"
+                                                         alt=""
+                                                         class="d-block w-100">
+                                                </div>
+                                            {% endif %}
+                                            {% if product.product_image4 %}
+                                                <div class="carousel-item">
+                                                    <img src="{{ BASIC_DIR }}/uploads/{{ product.product_image1 }}"
+                                                         alt=""
+                                                         class="d-block w-100">
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <button class="carousel-control-prev" type="button"
+                                                data-bs-target="#carouselExampleControls-{{ product.pk }}"
+                                                data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                                data-bs-target="#carouselExampleControls-{{ product.pk }}"
+                                                data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="col-7">
+                                    <div class="fw-bolder fs-2 text-dark">
+                                        {{ product.product_name }}
+                                    </div>
+                                    <div class="fw-bold fs-3" style="color: #005C45">
+                                        ₹ {{ product.expected_price }}
+                                    </div>
+                                    <div class="fw-normal text-dark">
+                                        {{ product.product_description|truncatechars:200 }}
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-7"
-                                 style="height: 220px; display: flex; align-items: center; justify-content: center; ">
-                                <div class="row">
-                  <span class="row" style="color: black; font-size: 1.125rem; font-weight: 500;">
-                    {{ product.product_name }}
-                  </span>
-                                    <span class="row" style="color: #005C45; font-size:1.563rem; font-weight: 500;">
-                    ₹ {{ product.expected_price }}
-                  </span>
-                                    <span class="row"
-                                          style="font-size: 0.875rem; max-height: 90px; overflow: hidden; text-overflow: ellipsis;">
-                    {{ product.product_description }}
-                  </span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
+
+                {% endfor %}
+            {% else %}
+                <div class="row">
+                    <div class="text-center p-3 fw-bolder fs-4">
+                        No products are approved for selling, keep waiting...
+
+                    </div>
+                    <div class="col-6 offset-3">
+                        <iframe width="100%" height="500"
+                                src="https://drive.google.com/file/d/17LbmDld3iWbCPib3K3lTuvHDM9HQJS2s/preview"
+                                allow="autoplay"></iframe>
+                    </div>
                 </div>
-
-            {% endfor %}
+            {% endif %}
         </div>
     </div>
 

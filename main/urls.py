@@ -18,6 +18,7 @@ urlpatterns = [
     path('admin/live_products/', views.products_live_admin, name='admin_live_products'),
     path('admin/deleted_products/', views.products_deleted_admin, name='admin_deleted_products'),
     path('seller/', views.g_seller, name='seller'),
+    path('yourProducts/',views.yourProducts,name='yourProducts'),
     path('success/<str:product>', views.productAdded, name='success'),
     path('admin/products_details/<int:id>', views.product_details_admin),
     path('admin/live_products_details/<int:id>', views.product_live_details_admin),

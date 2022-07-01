@@ -97,28 +97,28 @@ def logoutUser(request):
 
 
 def products(request):
-    product = ProductsTable.objects.all()
-    print(type(product))
-    print(len(product))
-    print(BASE_DIR)
-    # print(product[0].product_image1)
-    # print(product[0].id)
-    # print(product[1].id)
+    product = ProductsTable.objects.filter(status='APPROVED')
     return render(request, 'products.html', {'products': product, 'BASE_DIR': BASE_DIR})
 
 
 @staff_member_required(login_url='/admin')
 def admin_dashboard(request):
-    product = ProductsTable.objects.all()
-    approved_products = ProductsTable.objects.all()
-    deleted_prod = ProductsTable.objects.all()
-    all_pending = len(product)
-    all_approved = len(approved_products)
-    all_deleted_prod = len(deleted_prod)
+    all_pending = ProductsTable.objects.filter(status='WAITING').count()
+    all_approved = ProductsTable.objects.filter(status='APPROVED').count()
+    all_rejected = ProductsTable.objects.filter(status='REJECTED').count()
+    all_sold = ProductsTable.objects.filter(status='SOLD').count()
 
     return render(request, 'admin_dashboard.html',
-                  {'products': product, 'all_approved': all_approved, 'all_pending': all_pending,
-                   'all_deleted_prod': all_deleted_prod, 'BASE_DIR': BASE_DIR})
+                  {'all_sold': all_sold, 'all_approved': all_approved, 'all_pending': all_pending,
+                   'all_rejected': all_rejected})
+
+
+def yourProducts(request):
+    if request.user.is_authenticated:
+        userProducts = ProductsTable.objects.all()
+        return render(request, 'yourProducts.html', {'adminProducts': userProducts})
+    else:
+        return redirect('main:index')
 
 
 @staff_member_required(login_url='/admin')
@@ -326,7 +326,7 @@ def g_seller(request):
             context = {
                 "error": "Error in adding product, please try after sometime."
             }
-            return render(request, 'seller_page.html',context)
+            return render(request, 'seller_page.html', context)
 
     else:
         return render(request, 'seller_page.html')

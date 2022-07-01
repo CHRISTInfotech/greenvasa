@@ -35,7 +35,7 @@ class ProductsTable(models.Model):
     product_image2 = models.FileField(upload_to=user_directory_path2, null=True, verbose_name="")
     product_image3 = models.FileField(upload_to=user_directory_path2, null=True, verbose_name="")
     product_image4 = models.FileField(upload_to=user_directory_path2, null=True, verbose_name="")
-    # PRODUCT STATUS: WAITING, APPROVED, REJECTED
+    # PRODUCT STATUS: WAITING, APPROVED, REJECTED, SOLD
     status = models.CharField(max_length=50, blank=False, null=True)
     status_updated_on = models.DateTimeField(default=timezone.now)
     remark = models.CharField(max_length=100, blank=False, null=True)
