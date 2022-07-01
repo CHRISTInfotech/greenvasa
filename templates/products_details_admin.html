@@ -1,309 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <title>Greenvasa</title>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lusitana">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
- 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    
-
-    <style>
-        select {
-            width: 100px;
-            /* padding: 5px 35px 5px 5px; */
-            font-size: 16px;
-            border: 1px solid #CCC;
-            border-radius: 5px 0px 0px 5px;
-            /* height: 34px; */
-            /* -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background: url(https://stackoverflow.com/favicon.ico) 96% / 15% no-repeat #EEE; */
-            }
+    <div class="container mt-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item "><a class="text-decoration-none" href="{% url 'main:index' %}">Greenvasa</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a class="text-decoration-none" href="{% url 'main:admin_dashboard' %}">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a class="text-decoration-none" href="{% url 'main:admin_products' %}">New Sell Request</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ product.product_id }}</li>
+            </ol>
+        </nav>
+    </div>
 
 
-            /* CAUTION: Internet Explorer hackery ahead */
 
+    <div class="container mt-5 mb-5">
+        <div class="row">
 
-            select::-ms-expand {
-                display: none; /* Remove default arrow in Internet Explorer 10 and 11 */
-            }
-
-            /* Target Internet Explorer 9 to undo the custom arrow */
-            @media screen and (min-width:0\0) {
-                select {
-                    background: none\9;
-                    padding: 5px\9;
-                }
-            }
-
-            .imgSlideContainer {
-              position: absolute;
-              margin-top: 210px;
-              /* top: 40%; */
-              left: 20%;
-              transform: translate(-50%, -50%);
-              width: 500px;
-              height: 400px;
-
-            }
-
-            ul.thumb {
-              margin: 0 auto;
-              padding: 0;
-              float: left;
-            }
-
-            ul.thumb li {
-              list-style: none;
-              margin: 5px;
-              width: 100px;
-              height: 100px;
-              border: 1px solid rgba(0,0,0,.2);
-              overflow: hidden;
-            }
-
-            ul.thumb li img {
-              width: 100%;
-            }
-
-            .imgBox {
-              float: left;
-              width: 35vw;
-              height: 35vw;
-              /* max-height: 100%;
-               max-width: 100%; */
-              margin: 5px;
-              border: 1px solid rgba(0,0,0,.2);
-              overflow: hidden;
-
-            }
-
-            .imgBox img {
-              width: 100%;
-              min-height: fit-content;
-            }
-
-            .imgprop {
-              /* height:80px;
-               width: 80px; */
-               min-height: 100%;
-               max-height: fit-content;
-               min-width: 100%;
-            }
-    </style>
-
-
-</head>
-<body>
-    
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #005C45;">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'main:products' %}">
-              <img src="{% static 'img/logo.png' %}" alt="" width="140px" height="80px">
-          </a>
-
-          <h1 style="color: white; font-family: Lusitana;">GREENVASA <sub style=" font-family: 'Satisfy';">making living sustainable</sub></h1>
-          <div class="" style="margin-left: 15vw;"></div>
-
-          <!-- <form class="d-flex">
-            <select name="cars" id="cars">
-                <option value="Mobiles">Mobiles</option>
-                <option value="Laptops">Laptops</option>
-                <option value="Furniture">Furniture</option>
-                <option value="Electronics">Electronics</option>
-              </select> -->
-
-              <!-- <div class="dropdown">
-                <button class="dropbtn">Dropdown</button>
-                <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+            {% if message %}
+                <div class="col-12 mb-5">
+                    <div class="alert alert-warning" role="alert">
+                        {{ message }}
+                    </div>
                 </div>
-              </div> -->
-
-            <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style=" height: 50px; width: 40vw; margin-right: 0px!important; border-radius: 0px 0px 0px 0px;">
-            <button type="submit" style="border:none; background-color: aliceblue; border-radius: 0px 5px 5px 0px;"><i class="fa fa-search p-2"></i></button>
-          </form> -->
-
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <!-- <div style="margin-left: 5vw;"></div> -->
-
-
-        
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="color: aliceblue; font-size: 20px; font-weight: bold;">
-              <li class="nav-item px-2">
-                <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'main:products' %}">Buy</a>
-              </li>
-              <li class="nav-item px-2">
-                <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'seller:seller' %}">Sell</a>
-              </li>
-              <li class="nav-item px-2">
-                <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'main:aboutUs' %}">About Us</a>
-              </li>
-              <li class="nav-item px-2">
-                {% if user.is_authenticated %}
-             <!-- Hi {{ user.username }}! -->
-             <!-- <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'sign_up_in:logout' %}">Log Out</a></p> -->
-             <div class="dropdown pt-1" >
-              <button class="btn btn-secondary dropdown-toggle" type="button" style="background-color: #005C45;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Hi {{ user.username }}!
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                {% if user.is_staff == 1 %}
-                <a class="dropdown-item" href="{% url 'main:admin_dashboard' %}">Dashboard</a>
-                {% endif %}
-                <a class="dropdown-item" href="{% url 'sign_up_in:logout' %}">Log Out</a>
-              </div>
-            </div>
-            
-            {% else %}
-           <!-- <p>You are not logged in</p> -->
-           <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'sign_up_in:g_login' %}">Log In</a>
             {% endif %}
-          </li>
-            </ul>
-          </div>
 
-          <a class="navbar-brand 	d-none d-lg-block d-xl-block" href="#">
-            <img src="{% static 'img/Christ.png' %}" alt="" width="70px" height="70px">
-        </a>
+            <div class="col-4">
 
+                <div id="carouselExampleControls-{{ product.pk }}" class="carousel slide"
+                     data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% if product.product_image1 %}
+                            <div class="carousel-item active">
+                                <img src="{{ BASIC_DIR }}/uploads/{{ product.product_image1 }}"
+                                     alt=""
+                                     class="d-block w-100">
+                            </div>
+                        {% endif %}
+                        {% if product.product_image2 %}
+                            <div class="carousel-item">
+                                <img src="{{ BASIC_DIR }}/uploads/{{ product.product_image1 }}"
+                                     alt=""
+                                     class="d-block w-100">
+                            </div>
+                        {% endif %}
+                        {% if product.product_image3 %}
+                            <div class="carousel-item">
+                                <img src="{{ BASIC_DIR }}/uploads/{{ product.product_image1 }}"
+                                     alt=""
+                                     class="d-block w-100">
+                            </div>
+                        {% endif %}
+                        {% if product.product_image4 %}
+                            <div class="carousel-item">
+                                <img src="{{ BASIC_DIR }}/uploads/{{ product.product_image1 }}"
+                                     alt=""
+                                     class="d-block w-100">
+                            </div>
+                        {% endif %}
+                    </div>
+                    <button class="carousel-control-prev" type="button"
+                            data-bs-target="#carouselExampleControls-{{ product.pk }}"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button"
+                            data-bs-target="#carouselExampleControls-{{ product.pk }}"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="col-6">
+                <div class="float-end badge bg-primary">
+                    Posted before: {{ product.product_created_on|timesince }}
+                </div>
+                <div class="fw-bolder fs-2 text-dark">
+                    {{ product.product_name }}
+                    <div class="fw-light fs-6">{{ product.category }}</div>
+                </div>
+                <div class="fw-bold fs-3 mt-2" style="color: #005C45">
+                    ₹ {{ product.expected_price }}
+                </div>
+                <div class="fw-normal text-dark mt-3">
+                    {{ product.product_description }}
+                </div>
+
+
+                <div class="fw-bold fs-5 mt-5">
+                    Seller Details
+                </div>
+                <hr/>
+                <p>Name: {{ sellerDetails.user_id.first_name }} {{ sellerDetails.user_id.last_name }}</p>
+                <p>Email: {{ sellerDetails.email }}</p>
+                <p>Mobile Number: {{ sellerDetails.mobile_number }}</p>
+
+                <div class="mt-5">
+                    <hr/>
+                    <div class="float-end badge bg-warning mb-3">
+                        {{ product.status }} before: {{ product.status_updated_on|timesince }}
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="productID" id="productID" value="{{ product.product_id }}">
+
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="productComments"
+                                      name="productComments"
+                                      style="height: 100px">{{ product.remark }}</textarea>
+                        </div>
+                        <small class="text-muted">Add your comments</small>
+                        <div class="mt-3"></div>
+                        <button class="btn btn-success" type="submit" id="approve" name="approve">Approve</button>
+                        <button class="btn btn-danger" type="submit" id="reject" name="reject">Reject</button>
+                        <button class="btn btn-warning" type="submit" id="sold" name="sold">Sold</button>
+                    </form>
+                </div>
+            </div>
         </div>
-      </nav>
+    </div>
 
-
-
-      <div class="">
-        <div class="row m-5">
-          
-         <div class="col-6">
-
-          <div class="col-3">
-            <ul class="thumb">
-              <li>
-                <span> <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image1}}"  target="imgBox"> 
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="">
-                </a> </span>
-              </li>
-              {% if product.product_image2 != "False" %} 
-              <li>
-                <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image2}}" target="imgBox">
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image2}}" alt="">
-                </a>
-              </li>
-              {% endif %}
-              <li>
-                <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image3}}" target="imgBox">
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image3}}" alt="">
-                </a>
-              </li>
-              {% if product.product_image4 != "False" %}
-              <li>
-                <a href="" link="{{ BASIC_DIR }}/uploads/{{product.product_image4}}" target="imgBox">
-                  <img class="imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image4}}" alt="">
-                </a>
-              </li>
-              {% endif %}
-            </ul>
-          </div>
-
-          <div class="imgBox col-9">
-            <img style="" class=".imgprop" src="{{ BASIC_DIR }}/uploads/{{product.product_image1}}" alt="">
-          </div>
-
-         </div>
-
-         <div class="col-6">
-          <div class="row">
-            <span class="row" style="color: black; font-size: 1.5rem; font-weight: 500;">
-              {{product.product_name}}
-            </span>
-            <span class="row" style="color: #005C45; font-size:2rem; font-weight: 500;">
-              ₹ {{product.expected_price}}
-            </span>
-            <span class="row" style="font-size: 1.2rem; max-height: 90px; white-space: wrap; overflow: hidden; text-overflow: ellipsis;">
-              {{product.product_description}}
-            </span>
-
-          </div>
-
-          <div class="row" style="margin-top: 20px;">
-            <div class="card" style="padding-left: 0; padding-right: 0;" >
-              <h5 class="card-header" style="background-color: #a5fae5; color: black; font-weight: 600;">Contact Details</h5>
-              <div class="card-body">
-                <h5 class="card-title">Name: {{seller_details.user_name}}</h5>
-                <h5 class="card-title">Email: {{seller_details.email}}</h5>
-                <h5 class="card-title">Mobile Number: {{seller_details.mobile_number}}</h5>
-                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a> -->
-              </div>
-            </div>
-          </div>
-
-          <div class="row p-5">
-            <form action="" method="post">
-              {% csrf_token %}
-          <div class="row">
-            <div class="col-7">
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="remarks" id="floatingInput" placeholder="NA">
-                <label for="floatingInput">Any Remarks</label>
-              </div>
-            </div>
-            <div class="col-2 p-2">
-              <button class="btn btn-primary" name="canceled" style="background-color: #e04444; " type="submit">Cancel</button>
-            </div>
-            <div class="col-3 p-2">
-              <button class="btn btn-primary" name="approved" style="background-color: #005C45; " type="submit">Approve</button>
-            </div>
-          </div>
-              
-            </form>
-          </div>
-
-
-         </div>
-
-
-        </div>
-      </div>
-
-
-      <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
-      <script type="text/javascript">
-        $(document).ready(function(){
-          $('.thumb a').mouseover(function(e){
-            e.preventDefault();
-            $('.imgBox img').attr("src", $(this).attr("link"));
-          })
-        })
-      </script>
-
-
-</body>
-</html>
+{% endblock content %}
