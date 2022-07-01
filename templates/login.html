@@ -1,84 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <title>Greenvasa</title>
-
-        <!-- Google Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lusitana">
-        
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-
-
-    <style>
-        .btn-login {
-          font-size: 0.9rem;
-          letter-spacing: 0.05rem;
-          padding: 0.75rem 1rem;
-        }
-
-        .btn-google {
-          color: white !important;
-          background-color: #ea4335;
-        }
-
-        .btn-facebook {
-          color: white !important;
-          background-color: #3b5998;
-        }
-   </style>
-</head>
-<body style="background-color: #005C45;">
-
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 
     <div class="px-4 py-5 my-5 mt-0 pt-0 text-center">
         <img class="d-block mx-auto" src="{% static 'img/logo1.png' %}" alt="" width="250" height="230">
-        <!-- <p class="" style="color: aliceblue; font-size: 25px;">Enter the Details</p> -->
-        <div class="container" >
-          <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-              <div class="card border-0 shadow rounded-3 my-5 mt-0" style="background-color: #0D644E; border-radius: 5px;">
-                <div class="card-body p-4 p-sm-5" >
-                  <!-- <h5 class="card-title text-center mb-5 fw-bold fs-5" style="color: aliceblue;">Sign In to Greenvasa</h5> -->
-                  <h5 class="card-title text-center mb-5 fw-bold fs-5" style="color: white; font-family: Lusitana;">GREENVASA <sub style=" font-family: 'Satisfy';">making living sustainable</sub></h5>
-                  <form method="post" >
-                    {% csrf_token %}
-                    <div class="form-floating mb-3">
-                      <input type="text" class="form-control" name="email_address" id="floatingInput" placeholder="name@example.com">
-                      <label for="floatingInput">Email address</label>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                    <div class="card border-0 shadow rounded-3 my-5 mt-0">
+                        <div class="card-body p-4 p-sm-5">
+                            <h5 class="card-title text-center mb-5 fw-bold fs-3" style="font-family: Lusitana;color: #005C45">
+                                GREENVASA <sub style=" font-family: 'Satisfy';">making living sustainable</sub></h5>
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="email_address" id="floatingInput"
+                                           placeholder="firstname.lastname@christuniversity.in">
+                                    <label for="floatingInput">Email address</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" name="password" id="floatingPassword"
+                                           placeholder="Password">
+                                    <label for="floatingPassword">Password</label>
+                                </div>
+                                <div class="d-grid">
+                                    {% if request.GET.next %}
+                                        <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+                                    {% endif %}
+                                    <button class="btn text-uppercase fw-bold text-white" type="submit" style="background-color: #005C45;">Sign
+                                        in
+                                    </button>
+                                </div>
+                                <hr class="my-4">
+                                <div class="row">
+                                    <div class="col"><a href="{% url 'main:g_sign_up' %}" class="text-decoration-none">Don't have an account?</a>
+                                    </div>
+{#                                    <div class="col"><a href="{% url 'main:g_login' %}" class="text-decoration-none">Forgot Password?</a></div>#}
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-floating mb-3">
-                      <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
-                      <label for="floatingPassword">Password</label>
-                    </div>
-                    <div class="d-grid">
-                      {% if request.GET.next %}
-
-                      <input type="hidden" name="next" value="{{request.GET.next}}" />
-
-                      {% endif %}
-                      <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
-                        in</button>
-                    </div>
-                    <hr class="my-4">
-                    <div class="row">
-                      <div class="col"><a href="{% url 'sign_up_in:g_sign_up' %}">Don't have an account?</a></div>
-                      <div class="col"><a href="{% url 'sign_up_in:g_login' %}">Forgot Password?</a></div>
-                    </div>
-                  </form>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
     </div>
-    
-</body>
-</html>
+
+{% endblock content %}

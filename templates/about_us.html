@@ -1,136 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <title>Greenvasa</title>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lusitana">
+    <div class="container mt-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item "><a class="text-decoration-none" href="{% url 'main:index' %}">Greenvasa</a></li>
+                <li class="breadcrumb-item active" aria-current="page">About Us</li>
+            </ol>
+        </nav>
+    </div>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="container">
 
-     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <div class="row mt-5 mb-5">
+            <div class="card p-0">
+                <h5 class="card-header p-3" style="background-color: white; color: black; font-weight: 600;">About
+                    Us</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="card-text lh-lg">
+                                As Mahatma Gandhi said, &quot;There is enough for everybody&#39;s need but not for
+                                everybody&#39;s greed&quot;.
+                                Inspired by this sustainability message, we the students of MBA, Christ
+                                (Deemed-to-be-University), Pune Lavasa, bring to you – GREENVASA.
+                                GREENVASA is a way of living sustainably in the picturesque town of
+                                LAVASA, Pune. It is a small step at the University to conserve resources, it’s a
+                                step in the direction to reduce our carbon footprint. The concept very simply put
+                                is to buy and sell quality second-hand goods within the University to avoid
+                                wasteful spending and reduce future waste. Things that have an extended life
+                                can be sold to your fellow students or staff using our proprietary technology.
+                                It’s a platform built by the students, for the students. Earn money from your
+                                second-hand goods by selling on Greenvasa, and reduce your footprint by
+                                buying second-hand quality goods. Let’s REDUCE, REUSE, and then
+                                RECYCLE. Happy Sustainable living.
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <iframe width="100%" height="380"
+                                    src="https://drive.google.com/file/d/17LbmDld3iWbCPib3K3lTuvHDM9HQJS2s/preview"
+                                    allow="autoplay"></iframe>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-12">
+                            <h5 style="font-family: 'Lusitana';">Director&#39;s Address</h5>
+                            <hr/>
+                        </div>
 
-    
+                        <div class="col-4 d-flex justify-content-center align-items-center">
+                            <img class="img-fluid rounded" src="{% static 'img/director.png' %}">
+                        </div>
+                        <div class="col-8">
+                            <p class="card-text lh-lg">
+                                Tied to the core value of service that the university stands for, Greenvasa is a novel
+                                initiative
+                                that will facilitate the mindful use and exchange of materials in Lavasa. Sustainability
+                                has
+                                a
+                                special place in higher education because it induces thoughtfulness. To be able to think
+                                about
+                                the environment when we buy, exchange and discard our possessions can go a long way in
+                                creating a community-first mindset. Social responsibility is something that we
+                                constantly
+                                try
+                                to integrate into education, however putting it to practice in this manner will involve
+                                students
+                                completely in the process. After a year of conservation and energy saving initiatives 
+                                by
+                                the
+                                students of CHRIST Lavasa, I am certain that this project too will see its merits soon
+                                and
+                                will
+                                be beneficial to all who participate. Since Lavasa is built on the concept of new
+                                urbanism,
+                                it
+                                is structured to encourage community living and a responsible lifestyle. Greenvasa fits
+                                well
+                                with the synergy of the township and the socially-driven efforts of the CHRIST Lavasa
+                                campus. I invite everyone to be a part of this endeavour, to form a wonderful community,
+                                and
+                                take a step towards making the city we live in more sustainable and responsible.
+                            </p>
+                            <footer class="blockquote-footer"
+                                    style="font-family: 'Lusitana'; font-weight:900; text-align: right;"> Fr Jossy
+                                George,
+                                PhD <cite title="Source Title"></cite></footer>
+                        </div>
+                        <div class="col-12">
+                            <hr/>
+                        </div>
+                    </div>
 
-    <style>
-        select {
-            width: 100px;
-            /* padding: 5px 35px 5px 5px; */
-            font-size: 16px;
-            border: 1px solid #CCC;
-            border-radius: 5px 0px 0px 5px;
-            /* height: 34px; */
-            /* -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background: url(https://stackoverflow.com/favicon.ico) 96% / 15% no-repeat #EEE; */
-            }
+                    <div class="row mt-3">
+                        <p class="card-text lh-lg">
+                            Climate Change, Global Warming. ‘’Can we save the Planet, NO! Save
+                            Mankind’’ cos Earth will heal but we won’t. GREENVASA an initiative
+                            conceptualized as a joint initiative by Faculty and students of the batch of
+                            MBA’20, carried forward by the batch of MBA ’21 and the Dept. of Data
+                            Science. We wholeheartedly thank our Director and Dean, Fr. Dr. Jossy George
+                            for supporting, and encouraging us through words, deeds and resources.
 
-
-            /* CAUTION: Internet Explorer hackery ahead */
-
-
-            select::-ms-expand {
-                display: none; /* Remove default arrow in Internet Explorer 10 and 11 */
-            }
-
-            /* Target Internet Explorer 9 to undo the custom arrow */
-            @media screen and (min-width:0\0) {
-                select {
-                    background: none\9;
-                    padding: 5px\9;
-                }
-            }
-
-
-            .legend.product_box {
-    width:inherit; /* Or auto */
-    padding:0 10px; /* To give a bit of padding on the left and right */
-    border: #005C45 2px solid;
-    border-bottom:none;
-}
-    </style>
-
-
-</head>
-<body>
-    
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #005C45;">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'main:products' %}">
-              <img src="{% static 'img/logo.png' %}" alt="" width="140px" height="80px">
-          </a>
-
-          <h1 style="color: white; font-family: Lusitana;">GREENVASA <sub style=" font-family: 'Satisfy';">making living sustainable</sub></h1>
-          <div class="" style="margin-left: 15vw;"></div>
-
-          <!-- <form class="d-flex">
-            <select name="cars" id="cars">
-                <option value="Mobiles">Mobiles</option>
-                <option value="Laptops">Laptops</option>
-                <option value="Furniture">Furniture</option>
-                <option value="Electronics">Electronics</option>
-              </select> -->
-
-              <!-- <div class="dropdown">
-                <button class="dropbtn">Dropdown</button>
-                <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+                        </p>
+                        <footer class="blockquote-footer"
+                                style="font-family: 'Lusitana'; font-weight:900; text-align: right;"> Prof Stanny Dias
+                            <cite
+                                    title="Source Title"> Faculty School of Business and Management, MBA Christ
+                                Lavasa</cite>
+                        </footer>
+                    </div>
                 </div>
-              </div> -->
-<!-- 
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style=" height: 50px; width: 40vw; margin-right: 0px!important; border-radius: 0px 0px 0px 0px;">
-            <button type="submit" style="border:none; background-color: aliceblue; border-radius: 0px 5px 5px 0px;"><i class="fa fa-search p-2"></i></button>
-          </form> -->
-
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <!-- <div style="margin-left: 5vw;"></div> -->
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="color: aliceblue; font-size: 20px; font-weight: bold;">
-              <li class="nav-item px-2">
-                <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'main:products' %}">Buy</a>
-              </li>
-              <li class="nav-item px-2">
-                <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'seller:seller' %}">Sell</a>
-              </li>
-              <li class="nav-item px-2">
-                <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="#">About Us</a>
-              </li>
-              <li class="nav-item px-2">
-                {% if user.is_authenticated %}
-                <!-- Hi {{ user.username }}! -->
-                <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'sign_up_in:logout' %}">Log Out</a></p>
-               {% else %}
-              <!-- <p>You are not logged in</p> -->
-              <a class="nav-link active" aria-current="page" style="color: aliceblue;" href="{% url 'sign_up_in:g_login' %}">Log In</a>
-               {% endif %}
-              </li>
-            </ul>
-          </div>
-
-          <a class="navbar-brand 	d-none d-lg-block d-xl-block" href="#">
-            <img src="{% static 'img/Christ.png' %}" alt="" width="70px" height="70px">
-        </a>
-
+            </div>
         </div>
-      </nav>
 
+    </div>
 
-      <div class="container">
-        
-      </div>
-
-
-
-</body>
-</html>
+{% endblock content %}

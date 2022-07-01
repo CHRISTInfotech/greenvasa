@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container">
+
+        <div class="mt-5 m-auto">
+            <div class="text-center fw-bold fs-3">
+                Products You have added to Greenvasa
+                <hr/>
+            </div>
+            <div class="row d-flex justify-content-center">
+                {% if adminProducts %}
+                    {% for product in adminProducts %}
+
+                        <div class="col-5 shadow border m-2 p-3">
+                            <a href="/products_details/{{ product.product_id }}" class="text-decoration-none">
+                                <div class="row">
+                                 <div class="col-12 text-center mb-3">
+                                      <small class="text-dark text-muted">Posted before : {{ product.product_created_on|timesince }}</small>
+                                </div>
+                                    <div class="col-5">
+                                        <div id="carouselExampleControls-{{ product.pk }}" class="carousel slide"
+                                             data-bs-ride="carousel">
+                                            <div class="carousel-inner">
+                                                {% if product.product_image1 %}
+                                                    <div class="carousel-item active">
+                                                        <img src="{{ BASIC_DIR }}/uploads/{{ product.product_image1 }}"
+                                                             alt=""
+                                                             class="d-block w-100">
+                                                    </div>
+                                                {% endif %}
+                                                {% if product.product_image2 %}
+                                                    <div class="carousel-item">
+                                                        <img src="{{ BASIC_DIR }}/uploads/{{ product.product_image1 }}"
+                                                             alt=""
+                                                             class="d-block w-100">
+                                                    </div>
+                                                {% endif %}
+                                                {% if product.product_image3 %}
+                                                    <div class="carousel-item">
+                                                        <img src="{{ BASIC_DIR }}/uploads/{{ product.product_image1 }}"
+                                                             alt=""
+                                                             class="d-block w-100">
+                                                    </div>
+                                                {% endif %}
+                                                {% if product.product_image4 %}
+                                                    <div class="carousel-item">
+                                                        <img src="{{ BASIC_DIR }}/uploads/{{ product.product_image1 }}"
+                                                             alt=""
+                                                             class="d-block w-100">
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <button class="carousel-control-prev" type="button"
+                                                    data-bs-target="#carouselExampleControls-{{ product.pk }}"
+                                                    data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button"
+                                                    data-bs-target="#carouselExampleControls-{{ product.pk }}"
+                                                    data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-7">
+                                        <span class="badge bg-success float-end p-2">{{ product.status }}</span>
+                                        <div class="fw-bolder fs-2 text-dark">
+                                            {{ product.product_name }}
+                                        </div>
+                                        <div class="fw-bold fs-3" style="color: #005C45">
+                                            ₹ {{ product.expected_price }}
+                                        </div>
+                                        <div class="fw-normal text-dark">
+                                            {{ product.product_description|truncatechars:100 }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
