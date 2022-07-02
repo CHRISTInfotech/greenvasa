@@ -16,9 +16,10 @@
                         <div class="col-5 shadow border m-2 p-3">
                             <a href="/products_details/{{ product.product_id }}" class="text-decoration-none">
                                 <div class="row">
-                                 <div class="col-12 text-center mb-3">
-                                      <small class="text-dark text-muted">Posted before : {{ product.product_created_on|timesince }}</small>
-                                </div>
+                                    <div class="col-12 text-center mb-3">
+                                        <small class="text-dark text-muted">Posted before
+                                            : {{ product.product_created_on|timesince }}</small>
+                                    </div>
                                     <div class="col-5">
                                         <div id="carouselExampleControls-{{ product.pk }}" class="carousel slide"
                                              data-bs-ride="carousel">
@@ -84,6 +85,19 @@
                         </div>
 
                     {% endfor %}
+                {% else %}
+
+                        <div class="row">
+                    <div class="text-center p-3 fw-bolder fs-4">
+                        No products added...
+
+                    </div>
+                    <div class="col-6 offset-3">
+                        <iframe width="100%" height="500"
+                                src="https://drive.google.com/file/d/17LbmDld3iWbCPib3K3lTuvHDM9HQJS2s/preview"
+                                allow="autoplay"></iframe>
+                    </div>
+                </div>
                 {% endif %}
             </div>
         </div>

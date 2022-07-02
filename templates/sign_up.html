@@ -2,85 +2,74 @@
 {% load static %}
 {% block content %}
 
-    <div class="px-4 py-5 my-5 mt-0 pt-0 text-center">
-        <img class="d-block mx-auto" src="{% static 'img/logo1.png' %}" alt="" width="250" height="230">
-        <div class="container" >
-          <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-              <div class="card border-0 shadow rounded-3 my-5 mt-0" >
-                <div class="card-body p-4 p-sm-5" >
-                 <h5 class="card-title text-center mb-5 fw-bold fs-3" style="font-family: Lusitana;color: #005C45">
-                                GREENVASA <sub style=" font-family: 'Satisfy';">making living sustainable</sub></h5>
-                  <form method="post" >
-                    {% csrf_token %}
-                    <div class="form-floating mb-3">
-                      {{form.username}}
-                      
-                      <label for="floatingInput">Name</label>
-                      
-                    </div>
-                    <div class="form-floating mb-3">
-                      {{form.email}}
-                      <label for="floatingInput">Email address</label>
-                      
-                    </div>
-                    <div class="form-floating mb-3">
-                      {{form.phone}}
-                      <label for="floatingInput">Mobile Number</label>
-                      
-                    </div>
-                    <div class="form-floating mb-3">
-                      {{form.password1}}
-                      <label for="floatingPassword">Password</label>
-                      
-                    </div>
-                    <div class="form-floating mb-3">
-                      {{form.password2}}
-                      <div class="form-text confirm-message"></div>
-                      <label for="floatingPassword">Confirm Password</label>
-                      
-                    </div>
-                    <div class="d-grid">
-                      <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
-                        Up</button>
-                    </div>
-                    <hr class="my-4">
-                    <div class="row">
-                        <a href="{% url 'main:g_login' %}">Already have an account?</a>
-                    </div>
-                  </form>
-                </div>
-              </div>
+
+    {% if msg %}
+        <div class="container mt-3 mb-3">
+            <div class="alert alert-warning" role="alert">
+                {{ msg }}
             </div>
-          </div>
+        </div>
+    {% endif %}
+
+    <div class="container mt-5">
+
+        <div class="row shadow rounded-3 mt-5">
+            <div class="col d-flex justify-content-center align-items-center">
+                <div>
+                    <img class="d-block mx-auto" src="{% static 'img/logo1.png' %}" alt="" width="250">
+                    <h5 class="card-title text-center mb-5 fw-bold fs-3"
+                        style="font-family: Lusitana;color: #005C45">
+                        GREENVASA <sub style="font-family: 'Satisfy';">making living sustainable</sub></h5>
+                </div>
+            </div>
+            <div class="col p-5">
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="nName" name="nName"
+                                       placeholder=" " required>
+                                <label for="nName">Name</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="nEmail" name="nEmail"
+                                       placeholder="name@christuniversity.in" required>
+                                <label for="nEmail">Email address</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="nPassword1" name="nPassword1"
+                                       placeholder="Password" required>
+                                <label for="nPassword1">Password</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="nPassword2" name="nPassword2"
+                                       placeholder="Password" required>
+                                <label for="nPassword2">Confirm Password</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" id="nPhone" name="nPhone"
+                                       placeholder="Phone Number" pattern="[0-9]{10}" required>
+                                <label for="nPhone">Phone</label>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn text-uppercase fw-bold text-white" type="submit"
+                                    style="background-color: #005C45;">Sign Up
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <hr>
+            <div class="row text-center mb-3">
+                <a href="{% url 'main:g_login' %}" class="text-decoration-none">Already having an account?</a>
+            </div>
         </div>
     </div>
-  
-    
-
-    <script>
-      $('#password, #confirmpassword').on('keyup', function(){
-  
-          $('.confirm-message').removeClass('success-message').removeClass('error-message');
-  
-          let password=$('#password').val();
-          let confirm_password=$('#confirmpassword').val();
-  
-          if(password===""){
-              $('.confirm-message').text("Password Field cannot be empty").addClass('error-message');
-          }
-          else if(confirm_password===""){
-              $('.confirm-message').text("Confirm Password Field cannot be empty").addClass('error-message');
-          }
-          else if(confirm_password===password)
-          {
-              $('.confirm-message').text('Password Match!').addClass('success-message');
-          }
-          else{
-              $('.confirm-message').text("Password Doesn't Match!").addClass('error-message');
-          }
-  
-      });
-  </script>
 
 {% endblock content %}

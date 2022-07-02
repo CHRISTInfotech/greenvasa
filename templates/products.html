@@ -71,12 +71,21 @@
                                 <div class="col-7">
                                     <div class="fw-bolder fs-2 text-dark">
                                         {{ product.product_name }}
+                                        <div class="fw-light fs-6">{{ product.category }}</div>
                                     </div>
                                     <div class="fw-bold fs-3" style="color: #005C45">
                                         ₹ {{ product.expected_price }}
                                     </div>
                                     <div class="fw-normal text-dark">
                                         {{ product.product_description|truncatechars:200 }}
+                                    </div>
+                                    <div class="float-end mt-5">
+                                        <div class="badge bg-primary">
+                                            Posted before: {{ product.product_created_on|timesince }}
+                                        </div>
+                                        <div class="badge bg-warning">
+                                            Verified before: {{ product.status_updated_on|timesince }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

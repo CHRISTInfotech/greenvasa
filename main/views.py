@@ -1,6 +1,7 @@
 from uuid import uuid4
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -9,7 +10,6 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.utils import timezone
 
 from greenvasadev.settings import BASE_DIR
-from main.forms import CreateUserForm
 from main.models import ProductsTable, UserDetails
 
 
@@ -33,28 +33,25 @@ def g_sign_up(request):
     if request.user.is_authenticated:
         return redirect('/products')
     else:
-        form = CreateUserForm()
         if request.method == 'POST':
-            form = CreateUserForm(request.POST)
-            if form.is_valid():
-                form.save()
-                user = form.cleaned_data.get('username')
-                messages.success(request, 'Account was created for ' + user)
-                Name = request.POST["username"]
-                Email = request.POST["email"]
-                Mobile_Number = request.POST["phone"]
-                # Password = request.POST.get("confirm_password", False)
-
-                sign_up_data = UserDetails()
-                sign_up_data.user_name = Name
-                sign_up_data.email = Email
-                sign_up_data.mobile_number = Mobile_Number
-                # sign_up_data.password = Password
-                sign_up_data.save()
-
-                return redirect('sign_up_in:g_login')
-
-        context = {'form': form}
+            if request.POST['nPassword1'].strip() == request.POST['nPassword2'].strip():
+                user = User(password=make_password(request.POST['nPassword1'].strip()),
+                            username=request.POST['nEmail'],
+                            email=request.POST['nEmail'],
+                            first_name=request.POST['nName'])
+                user.save()
+                userdetails = UserDetails(user_name=user.username, email=user.email,
+                                          mobile_number=request.POST['nPhone'], user_id=user)
+                userdetails.save()
+                return redirect('main:g_login')
+            else:
+                context = {
+                    'msg': 'Error in the inputs given, kindly make sure that you are using proper details to create user'
+                }
+                return render(request, 'sign_up.html', context)
+        context = {
+            'msg': ''
+        }
         return render(request, 'sign_up.html', context)
 
 
@@ -63,29 +60,22 @@ def g_login(request):
         return redirect('/products')
     else:
         if request.method == 'POST':
-            # Email = request.POST.get('email_address')
             Email = request.POST.get('email_address')
             password = request.POST.get('password')
-
-            print(Email)
-            print(password)
 
             user = authenticate(request, username=Email, password=password)
 
             if user is not None:
-                print("Login success")
                 login(request, user)
                 request.session["login_status"] = True
                 request.session["user_email"] = user.email
-                print(request.session["user_email"])
                 if 'next' in request.POST:
                     return redirect(request.POST.get('next'))
                 elif user.is_staff == 1:
                     return redirect('main:admin_dashboard')
                 else:
-                    return redirect('seller:seller')
+                    return redirect('main:seller')
             else:
-                print('Login is not success')
                 messages.info(request, 'Username OR password is incorrect')
 
         context = {}
@@ -114,9 +104,10 @@ def admin_dashboard(request):
                    'all_rejected': all_rejected})
 
 
+@login_required
 def yourProducts(request):
     if request.user.is_authenticated:
-        userProducts = ProductsTable.objects.all()
+        userProducts = ProductsTable.objects.filter(user_id=request.user)
         return render(request, 'yourProducts.html', {'adminProducts': userProducts})
     else:
         return redirect('main:index')
@@ -130,32 +121,29 @@ def products_admin(request):
 
 @staff_member_required(login_url='/admin')
 def products_deleted_admin(request):
-    product = ProductsTable.objects.all()
-    print(type(product))
-    print(len(product))
-    print(BASE_DIR)
-    # print(product[0].product_image1)
-    # print(product[0].id)
-    # print(product[1].id)
+    product = ProductsTable.objects.filter(status='REJECTED')
     return render(request, 'products_deleted_admin.html', {'products': product, 'BASE_DIR': BASE_DIR})
 
 
 @staff_member_required(login_url='/admin')
 def products_live_admin(request):
-    product = ProductsTable.objects.all()
-    print(type(product))
-    print(len(product))
-    print(BASE_DIR)
-
+    product = ProductsTable.objects.filter(status='APPROVED')
     return render(request, 'live_products_admin.html', {'products': product, 'BASE_DIR': BASE_DIR})
 
 
-# @staff_member_required(login_url='/admin')
+@staff_member_required(login_url='/admin')
+def products_sold_admin(request):
+    product = ProductsTable.objects.filter(status='SOLD')
+    return render(request, 'products_sold_details_admin.html', {'products': product, 'BASE_DIR': BASE_DIR})
+
+
+@login_required(login_url='/login')
 def product_details(request, product):
     sel_product = ProductsTable.objects.get(product_id=product)
+    sellerDetails = UserDetails.objects.get(user_id__email=sel_product.user_id)
 
     return render(request, 'products_details.html',
-                  {'product': sel_product, 'BASE_DIR': BASE_DIR})
+                  {'product': sel_product, 'sellerDetails': sellerDetails, 'BASE_DIR': BASE_DIR})
 
 
 @staff_member_required(login_url='/admin')
