@@ -8,9 +8,7 @@
                 <li class="breadcrumb-item "><a class="text-decoration-none" href="{% url 'main:index' %}">Greenvasa</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    <a class="text-decoration-none" href="{% url 'main:admin_dashboard' %}">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    <a class="text-decoration-none" href="{% url 'main:admin_products' %}">New Sell Request</a></li>
+                    <a class="text-decoration-none" href="{% url 'main:products' %}">Products</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ product.product_id }}</li>
             </ol>
         </nav>
@@ -19,15 +17,7 @@
 
 
     <div class="container mt-5 mb-5">
-        <div class="row">
-
-            {% if message %}
-                <div class="col-12 mb-5">
-                    <div class="alert alert-warning" role="alert">
-                        {{ message }}
-                    </div>
-                </div>
-            {% endif %}
+        <div class="row mt-5">
 
             <div class="col-4">
 
@@ -80,8 +70,13 @@
             </div>
 
             <div class="col-6">
-                <div class="float-end badge bg-primary">
-                    Posted before: {{ product.product_created_on|timesince }}
+                <div class="float-end">
+                    <div class="badge bg-primary">
+                        Posted before: {{ product.product_created_on|timesince }}
+                    </div>
+                    <div class="badge bg-warning">
+                        Verified before: {{ product.status_updated_on|timesince }}
+                    </div>
                 </div>
                 <div class="fw-bolder fs-2 text-dark">
                     {{ product.product_name }}
@@ -99,9 +94,11 @@
                     Seller Details
                 </div>
                 <hr/>
-                <p>Name: {{ sellerDetails.user_id.first_name }} {{ sellerDetails.user_id.last_name }}</p>
-                <p>Email: {{ sellerDetails.email }}</p>
-                <p>Mobile Number: {{ sellerDetails.mobile_number }}</p>
+                <p>
+                    <i class="fa fa-user"></i> {{ sellerDetails.user_id.first_name }} {{ sellerDetails.user_id.last_name }}
+                </p>
+                <p><i class="fa fa-envelope"></i> {{ sellerDetails.email }}</p>
+                <p><i class="fa fa-phone"></i> {{ sellerDetails.mobile_number }}</p>
 
             </div>
         </div>

@@ -9,7 +9,7 @@
                 </li>
                 <li class="breadcrumb-item "><a class="text-decoration-none" href="{% url 'main:admin_dashboard' %}">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Rejected Products</li>
+                <li class="breadcrumb-item active" aria-current="page">Sold Products</li>
             </ol>
         </nav>
     </div>
@@ -17,7 +17,7 @@
     <div class="container mt-2">
         <div class="row">
             <div class="col-12 fw-bold fs-4 text-center">
-                Rejected Products
+                Sold Products
                 <hr/>
             </div>
         </div>
@@ -98,7 +98,7 @@
                 {% endfor %}
             {% else %}
                 <div class="text-center mt-5 fw-bolder">
-                    No products are rejected
+                    No products are Sold
                 </div>
             {% endif %}
         </div>
