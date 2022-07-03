@@ -123,9 +123,9 @@ STATICFILES_DIRS = [
 #    BASE_DIR / "gstatic",
 ]
 
-MEDIA_URL = '/uploads/'
+MEDIA_URL = '/gmedia/'
 #MEDIA_ROOT = BASE_DIR / 'uploads'
-MEDIA_ROOT = '/home/u1r60cp6vyvs/public_html/gmedia/'
+MEDIA_ROOT = '/home/u1r60cp6vyvs/public_html/greenvasa.christinfotech.org/gmedia/'
 
 # LOGIN_URL = '/login'
 # LOGIN_REDIRECT_URL = '/products'
