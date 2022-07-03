@@ -116,15 +116,16 @@ USE_TZ = True
 
 STATIC_URL = '/gstatic/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'gstatic')
-# STATIC_ROOT = '/home/u1r60cp6vyvs/public_html/gstatic/'
+STATIC_ROOT = '/home/u1r60cp6vyvs/public_html/gstatic'
 
-STATICFILES_DIRS = (
-    # '/home/u1r60cp6vyvs/greenvasa/gstatic',
-    BASE_DIR / "gstatic",
-)
+STATICFILES_DIRS = [
+    '/home/u1r60cp6vyvs/greenvasa/gstatic',
+#    BASE_DIR / "gstatic",
+]
 
 MEDIA_URL = '/uploads/'
-MEDIA_ROOT = BASE_DIR / 'uploads'
+#MEDIA_ROOT = BASE_DIR / 'uploads'
+MEDIA_ROOT = '/home/u1r60cp6vyvs/public_html/gmedia/'
 
 # LOGIN_URL = '/login'
 # LOGIN_REDIRECT_URL = '/products'
