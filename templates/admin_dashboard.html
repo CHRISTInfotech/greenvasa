@@ -8,52 +8,60 @@
             <h3 class="text-center mt-5">Admin Dashboard</h3>
             <hr/>
 
-            <div class="mt-5 justify-content-center">
-                <div class="row justify-content-center">
+            <div class="mt-5 mb-5 justify-content-center">
+                <div class="row row-cols-2">
 
 
-                    <div class="col-4 m-2 shadow justify-content-center">
+                    <div class="col">
+                        <div class=" m-2 mb-5 shadow justify-content-center">
                         <a href="{% url 'main:admin_products' %}" class="text-decoration-none text-center">
                             <div class="row pt-5 text-dark">
                                 <h4>Products that need your verification</h4>
                             </div>
-                            <div class="fw-bolder fs-1" style="color: #005C45">
+                            <div class="fw-bolder fs-1 pb-3" style="color: #005C45">
                                 <p> {{ all_pending }} </p>
                             </div>
                         </a>
                     </div>
+                    </div>
 
-                    <div class="col-4 m-2 shadow justify-content-center">
+                   <div class="col">
+                        <div class="m-2 mb-5 shadow justify-content-center">
                         <a href="{% url 'main:admin_deleted_products' %}" class="text-decoration-none text-center">
                             <div class="row pt-5 text-dark">
                                 <h4>Products that has been rejected</h4>
                             </div>
-                            <div class="fw-bolder fs-1" style="color: #005C45">
+                            <div class="fw-bolder fs-1 pb-3" style="color: #005C45">
                                 <p> {{ all_rejected }} </p>
                             </div>
                         </a>
                     </div>
+                   </div>
 
-                    <div class="col-4 m-2 mt-5 shadow justify-content-center">
+                    <div class="col">
+                        <div class=" m-2 mt-5 mb-5 shadow justify-content-center">
                         <a href="{% url 'main:admin_live_products' %}" class="text-decoration-none text-center">
                             <div class="row pt-5 text-dark  ">
                                 <h4>Products that are live now</h4>
                             </div>
-                            <div class="fw-bolder fs-1" style="color: #005C45">
+                            <div class="fw-bolder fs-1 pb-3" style="color: #005C45">
                                 <p> {{ all_approved }} </p>
                             </div>
                         </a>
                     </div>
+                    </div>
 
-                    <div class="col-4 m-2 mt-5 shadow justify-content-center">
+                    <div class="col">
+                        <div class=" m-2 mt-5 mb-5 shadow justify-content-center">
                         <a href="{% url 'main:admin_sold_products' %}" class="text-decoration-none text-center">
                             <div class="row pt-5 text-dark  ">
                                 <h4>Products that are SOLD by now</h4>
                             </div>
-                            <div class="fw-bolder fs-1" style="color: #005C45">
+                            <div class="fw-bolder fs-1 pb-3" style="color: #005C45">
                                 <p> {{ all_sold }} </p>
                             </div>
                         </a>
+                    </div>
                     </div>
 
                 </div>

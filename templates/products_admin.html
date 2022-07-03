@@ -22,11 +22,11 @@
         </div>
     </div>
 
-    <div class="m-4 justify-content-center">
-        <div class="row justify-content-center">
+    <div class="m-4 m=0">
+        <div class="row justify-content-center  row-cols-sm-2 row-cols-md-3 m-0">
             {% for product in products %}
 
-                <div class="col-4 shadow p-3 m-2">
+                <div class="col shadow p-3 m-2">
                     <a href="{% url 'main:admin-product-detail' product.product_id %}" class="text-decoration-none">
                         <div class="row">
                             <div class="col-5">

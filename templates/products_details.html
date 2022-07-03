@@ -17,9 +17,9 @@
 
 
     <div class="container mt-5 mb-5">
-        <div class="row mt-5">
+        <div class="row mt-5 row-cols-xs-1 ">
 
-            <div class="col-4">
+            <div class="col-12 col-sm-4	col-md-4 col-lg-4 col-xl-4 col-xxl-4">
 
                 <div id="carouselExampleControls-{{ product.pk }}" class="carousel slide"
                      data-bs-ride="carousel">
@@ -69,7 +69,7 @@
 
             </div>
 
-            <div class="col-6">
+            <div class="col">
                 <div class="float-end">
                     <div class="badge bg-primary">
                         Posted before: {{ product.product_created_on|timesince }}
