@@ -124,7 +124,7 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/gmedia/'
-#MEDIA_ROOT = BASE_DIR / 'gmedia'
+# MEDIA_ROOT = BASE_DIR / 'gmedia'
 MEDIA_ROOT = '/home/u1r60cp6vyvs/public_html/greenvasa.christinfotech.org/gmedia/'
 
 # LOGIN_URL = '/login'

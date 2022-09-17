@@ -104,7 +104,7 @@ def admin_dashboard(request):
                    'all_rejected': all_rejected})
 
 
-@login_required
+@login_required(login_url='/login')
 def yourProducts(request):
     if request.user.is_authenticated:
         userProducts = ProductsTable.objects.filter(user_id=request.user)
@@ -144,6 +144,17 @@ def product_details(request, product):
 
     return render(request, 'products_details.html',
                   {'product': sel_product, 'sellerDetails': sellerDetails, 'BASE_DIR': BASE_DIR})
+
+
+@login_required(login_url='/login')
+def userMarkSold(request,product):
+    try:
+        sel_product = ProductsTable.objects.get(product_id=product)
+        sel_product.status = 'SOLD'
+        sel_product.save()
+        return redirect('main:product-details',product)
+    except:
+        return redirect('index')
 
 
 @staff_member_required(login_url='/admin')
