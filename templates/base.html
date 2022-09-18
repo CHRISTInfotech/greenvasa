@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,13 +16,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
@@ -37,69 +38,69 @@
         }
     </style>
 </head>
+
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #005C45;">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'main:products' %}">
-            <img src="{% static 'img/logo.png' %}" alt="" width="140px" height="80px">
-        </a>
-
-        <h1 style="color: white; font-family: Lusitana;">
-            <a href="{% url 'main:index' %}" class="text-decoration-none text-light">GREENVASA</a>
-            <sub style=" font-family: 'Satisfy';" class="d-none d-sm-block">making living sustainable</sub></h1>
-        <div class="" style="margin-left: 15vw;"></div>
+    <nav class="navbar navbar-expand-lg navbar-light p-2" style="background-color: #005C45;">
+        <!-- <div class="container-fluid"> -->
+        <div class="navbar-brand row m-auto">
+            <a class="col d-none  d-xl-block" href="{% url 'main:products' %}">
+                <img src="{% static 'img/logo.png' %}" alt="" width="140px" height="80px">
+            </a>
+            <h1 class="col" style="color: white; font-family: Lusitana;">
+                <a href="{% url 'main:index' %}" class="text-decoration-none text-light">GREENVASA</a>
+                <sub style=" font-family: 'Satisfy';" class="d-none d-sm-block">making living sustainable</sub>
+            </h1>
+        </div>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- <div style="margin-left: 5vw;"></div> -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 5vw;">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="color: aliceblue; font-size: 20px; font-weight: bold;">
                 <li class="nav-item px-2">
                     <a class="nav-link active" aria-current="page" style="color: aliceblue;"
-                       href="{% url 'main:products' %}">Buy</a>
+                        href="{% url 'main:products' %}">Buy</a>
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link active" aria-current="page" style="color: aliceblue;"
-                       href="{% url 'main:seller' %}">Sell</a>
+                        href="{% url 'main:seller' %}">Sell</a>
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link active" aria-current="page" style="color: aliceblue;"
-                       href="{% url 'main:aboutUs' %}">About Us</a>
+                        href="{% url 'main:aboutUs' %}">About Us</a>
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link active" aria-current="page" style="color: aliceblue;"
-                       href="{% url 'main:rules' %}">Our Policy</a>
+                        href="{% url 'main:rules' %}">Our Policy</a>
                 </li>
                 <li class="nav-item px-2">
                     {% if user.is_authenticated %}
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" style="background-color: #005C45;color: aliceblue"
-                               href="#"
-                               id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Hi {{ user.username }}!
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {% if user.is_staff == 1 %}
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'main:admin_dashboard' %}">Dashboard</a>
-                                    </li>
-                                {% endif %}
-
-                                <li><a class="dropdown-item" href="{% url 'main:yourProducts' %}">Your Products</a></li>
-                                <li><a class="dropdown-item" href="{% url 'main:logout' %}">Logout</a></li>
-
-                            </ul>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" style="background-color: #005C45;color: aliceblue" href="#"
+                        id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Hi {{ user.username }}!
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% if user.is_staff == 1 %}
+                        <li>
+                            <a class="dropdown-item" href="{% url 'main:admin_dashboard' %}">Dashboard</a>
                         </li>
+                        {% endif %}
 
-                    {% else %}
-                        <!-- <p>You are not logged in</p> -->
-                        <a class="nav-link active" aria-current="page" style="color: aliceblue;"
-                           href="{% url 'main:g_login' %}">Log In</a>
-                    {% endif %}
+                        <li><a class="dropdown-item" href="{% url 'main:yourProducts' %}">Your Products</a></li>
+                        <li><a class="dropdown-item" href="{% url 'main:logout' %}">Logout</a></li>
+
+                    </ul>
+                </li>
+
+                {% else %}
+                <!-- <p>You are not logged in</p> -->
+                <a class="nav-link active" aria-current="page" style="color: aliceblue;"
+                    href="{% url 'main:g_login' %}">Log In</a>
+                {% endif %}
                 </li>
             </ul>
         </div>
@@ -108,16 +109,17 @@
             <img src="{% static 'img/Christ.png' %}" alt="" height="70px">
         </a>
 
-    </div>
-</nav>
+        <!-- </div> -->
+    </nav>
 
-{% block content %}
+    {% block content %}
 
-{% endblock content %}
+    {% endblock content %}
 
-<footer class="p-3 text-center text-light" style="background-color: #005C45;">
-    Powered by CHRIST Infotech | &copy; CHRIST Infotech | With &hearts; CHRIST Lavasa
-</footer>
+    <footer class="p-3 text-center text-light" style="background-color: #005C45;">
+        Powered by CHRIST Infotech | &copy; CHRIST Infotech | With &hearts; CHRIST Lavasa
+    </footer>
 
 </body>
+
 </html>
