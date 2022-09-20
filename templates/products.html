@@ -2,6 +2,13 @@
 {% load static %}
 {% block content %}
 
+    <style>
+        .cropped{
+            height: 200px;
+            overflow: hidden;
+        }
+    </style>
+
     <div class="container mt-5">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -24,7 +31,7 @@
                                     <div class="col-5">
                                         <div id="carouselExampleControls-{{ product.pk }}" class="carousel slide"
                                              data-bs-ride="carousel">
-                                            <div class="carousel-inner">
+                                            <div class="carousel-inner cropped">
                                                 {% if product.product_image1 %}
                                                     <div class="carousel-item active">
                                                         <img src="{{ BASIC_DIR }}/gmedia/{{ product.product_image1 }}"
