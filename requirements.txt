@@ -59,7 +59,7 @@ sos==4.3
 sqlparse==0.4.2
 ssh-import-id==5.10
 systemd-python==234
-Twisted==18.9.0
+Twisted==22.10.0
 ubuntu-advantage-tools==27.10
 ufw==0.36
 unattended-upgrades==0.1
